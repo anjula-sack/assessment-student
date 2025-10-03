@@ -171,7 +171,7 @@ import { useSearchParams } from 'next/navigation'
 import React, { Suspense, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import LanguageDropdown from '../languageDropdown'
-import { getGrades, getSchools } from '@/app/page'
+import { getGrades, getSchools } from '@/utils/schools'
 
 // Function to get audio files based on language
 const getAudioFiles = (language: string) => {

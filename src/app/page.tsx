@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import Button from './components/button'
 import LanguageDropdown from './components/languageDropdown'
 import Dropdown from './components/dropdown'
+import { getSchools, getGrades } from '@/utils/schools'
 
 // English audio files
 import instruction1 from '@/assets/audios/en/instructions/instruction_1.mp3'
@@ -50,14 +51,6 @@ const getInstructionAudios = (language: string) => {
     isArabic ? instruction6Ar : instruction6,
   ]
 }
-
-export const getSchools = (t: any) => [
-  { label: t('schools.avalonHeights'), value: 'avalonHeights' },
-]
-
-export const getGrades = (t: any) => [
-  { label: t('grades.grade1'), value: 'grade1' },
-]
 
 function PageContent() {
   const { t, i18n } = useTranslation()
