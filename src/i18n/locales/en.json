@@ -13,7 +13,8 @@
     "iDoNotKnow": "I do not know"
   },
   "schools": {
-    "avalonHeights": "Avalon Heights, Mumbai"
+    "school1": "School 1",
+    "school2": "School 2"
   },
   "grades": {
     "grade1": "Grade 1"

@@ -13,7 +13,8 @@
     "iDoNotKnow": "لا أعرف"
   },
   "schools": {
-    "avalonHeights": "أفالون هايتس، مومباي"
+    "school1": "المدرسة الأولى",
+    "school2": "المدرسة الثانية"
   },
   "grades": {
     "grade1": "الصف الأول"

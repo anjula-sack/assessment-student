@@ -1,5 +1,6 @@
 export const getSchools = (t: any) => [
-  { label: t('schools.avalonHeights'), value: 'avalonHeights' },
+  { label: t('schools.school1'), value: 'school1' },
+  { label: t('schools.school2'), value: 'school2' },
 ]
 
 export const getGrades = (t: any) => [

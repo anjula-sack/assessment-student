@@ -19,7 +19,7 @@ describe('appwrite service', () => {
   describe('createAssessment', () => {
     it('calls createDocument with correct parameters and returns value', async () => {
       const data = {
-        school: 'Avalon Heights, Mumbai',
+        school: 'School 1',
         grade: 'Grade 1',
         overallScore: 25,
         scores: '{"question_1":3,"question_2":1}',
