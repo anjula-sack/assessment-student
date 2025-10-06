@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -10,12 +11,26 @@ const languages = [
 export default function LanguageDropdown() {
   const { i18n, t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
   const currentLanguage =
     languages.find((lang) => lang.code === i18n.language) || languages[0]
 
   const handleLanguageChange = (languageCode: string) => {
     i18n.changeLanguage(languageCode)
+
+    // Update URL with new language parameter
+    const currentParams = new URLSearchParams(searchParams.toString())
+    currentParams.set('lang', languageCode)
+
+    // Get current pathname and update URL
+    const currentPath = window.location.pathname
+    const newUrl = `${currentPath}?${currentParams.toString()}`
+
+    // Use router.replace to update URL without adding to history
+    router.replace(newUrl)
+
     setIsOpen(false)
   }
 

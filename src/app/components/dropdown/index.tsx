@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
 import { Option } from '@/types'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Dropdown = ({
   options,
@@ -42,10 +42,7 @@ const Dropdown = ({
   }
 
   return (
-    <div
-      className="relative inline-block rounded-2xl w-full z-10"
-      ref={dropdownRef}
-    >
+    <div className="relative inline-block rounded-2xl w-full" ref={dropdownRef}>
       <div>
         <button
           type="button"
@@ -69,19 +66,25 @@ const Dropdown = ({
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute mt-2 rounded-2xl shadow-lg bg-primary-100 w-full">
-          <div className="py-1">
-            {options.map((option) => (
-              <button
-                key={option.value}
-                className="block px-4 py-2 text-primary-900 font-medium hover:bg-gray-100 w-full text-left rounded-2xl"
-                onClick={() => handleSelect(option)}
-              >
-                {option.label}
-              </button>
-            ))}
+        <>
+          <div
+            className="fixed inset-0 z-40"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="origin-top-right absolute mt-2 rounded-2xl shadow-lg bg-primary-100 w-full z-50">
+            <div className="py-1">
+              {options.map((option) => (
+                <button
+                  key={option.value}
+                  className="block px-4 py-2 text-primary-900 font-medium hover:bg-gray-100 w-full text-left rounded-2xl"
+                  onClick={() => handleSelect(option)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   )

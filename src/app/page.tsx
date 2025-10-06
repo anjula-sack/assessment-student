@@ -91,6 +91,10 @@ function PageContent() {
     if (formData.school.value) params.set('school', formData.school.value)
     if (formData.grade.value) params.set('grade', formData.grade.value)
 
+    // Preserve language parameter
+    const langParam = searchParams.get('lang')
+    if (langParam) params.set('lang', langParam)
+
     router.push(`/assessment?${params.toString()}`)
   }
 

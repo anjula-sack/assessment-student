@@ -1,179 +1,150 @@
+import LanguageDropdown from '../languageDropdown'
 import Button from '@/app/components/button'
 import Progress from '@/app/components/progress'
 import RadioGroup from '@/app/components/radioGroup'
-
-// Import English audio files
-// Question audios
-import q1AudioEn from '@/assets/audios/en/1. Student Survey_Question 1.mp3'
-import q2AudioEn from '@/assets/audios/en/5. Student Survey_Question 2.mp3'
-import q3AudioEn from '@/assets/audios/en/9. Student Survey_Question 3.mp3'
-import q4AudioEn from '@/assets/audios/en/13. Student Survey_Question 4.mp3'
-import q5AudioEn from '@/assets/audios/en/17. Student Survey_Question 5.mp3'
-import q6AudioEn from '@/assets/audios/en/21. Student Survey_Question 6.mp3'
-import q7AudioEn from '@/assets/audios/en/25. Student Survey_Question 7.mp3'
-import q8AudioEn from '@/assets/audios/en/29. Student Survey_Question 8.mp3'
-import q9AudioEn from '@/assets/audios/en/33. Student Survey_Question 9.mp3'
-import q10AudioEn from '@/assets/audios/en/37. Student Survey_Question 10.mp3'
-import q11AudioEn from '@/assets/audios/en/41. Student Survey_Question 11.mp3'
-import q12AudioEn from '@/assets/audios/en/47. Student Survey_Question 12.mp3'
-
-// Question 1 options
-import q1opt1AudioEn from '@/assets/audios/en/2. Student Survey_Question 1_Option 1.mp3'
-import q1opt2AudioEn from '@/assets/audios/en/3. Student Survey_Question 1_Option 2.mp3'
-import q1opt3AudioEn from '@/assets/audios/en/4. Student Survey_Question 1_Option 3.mp3'
-
-// Question 2 options
-import q2opt1AudioEn from '@/assets/audios/en/6. Student Survey_Question 2_Option 1.mp3'
-import q2opt2AudioEn from '@/assets/audios/en/7. Student Survey_Question 2_Option 2.mp3'
-import q2opt3AudioEn from '@/assets/audios/en/8. Student Survey_Question 2_Option 3.mp3'
-
-// Question 3 options
-import q3opt1AudioEn from '@/assets/audios/en/10. Student Survey_Question 3_Option 1.mp3'
-import q3opt2AudioEn from '@/assets/audios/en/11. Student Survey_Question 3_Option 2.mp3'
-import q3opt3AudioEn from '@/assets/audios/en/12. Student Survey_Question 3_Option 3.mp3'
-
-// Question 4 options
-import q4opt1AudioEn from '@/assets/audios/en/14. Student Survey_Question 4_Option 1.mp3'
-import q4opt2AudioEn from '@/assets/audios/en/15. Student Survey_Question 4_Option 2.mp3'
-import q4opt3AudioEn from '@/assets/audios/en/16. Student Survey_Question 4_Option 3.mp3'
-
-// Question 5 options
-import q5opt1AudioEn from '@/assets/audios/en/18. Student Survey_Question 5_Option 1.mp3'
-import q5opt2AudioEn from '@/assets/audios/en/19. Student Survey_Question 5_Option 2.mp3'
-import q5opt3AudioEn from '@/assets/audios/en/20. Student Survey_Question 5_Option 3.mp3'
-
-// Question 6 options
-import q6opt1AudioEn from '@/assets/audios/en/22. Student Survey_Question 6_Option 1.mp3'
-import q6opt2AudioEn from '@/assets/audios/en/23. Student Survey_Question 6_Option 2.mp3'
-import q6opt3AudioEn from '@/assets/audios/en/24. Student Survey_Question 6_Option 3.mp3'
-
-// Question 7 options
-import q7opt1AudioEn from '@/assets/audios/en/26. Student Survey_Question 7_Option 1.mp3'
-import q7opt2AudioEn from '@/assets/audios/en/27. Student Survey_Question 7_Option 2.mp3'
-import q7opt3AudioEn from '@/assets/audios/en/28. Student Survey_Question 7_Option 3.mp3'
-
-// Question 8 options
-import q8opt1AudioEn from '@/assets/audios/en/30. Student Survey_Question 8_Option 1.mp3'
-import q8opt2AudioEn from '@/assets/audios/en/31. Student Survey_Question 8_Option 2.mp3'
-import q8opt3AudioEn from '@/assets/audios/en/32. Student Survey_Question 8_Option 3.mp3'
-
-// Question 9 options
-import q9opt1AudioEn from '@/assets/audios/en/34. Student Survey_Question 9_Option 1.mp3'
-import q9opt2AudioEn from '@/assets/audios/en/35. Student Survey_Question 9_Option 2.mp3'
-import q9opt3AudioEn from '@/assets/audios/en/36. Student Survey_Question 9_Option 3.mp3'
-
-// Question 10 options
-import q10opt1AudioEn from '@/assets/audios/en/38. Student Survey_Question 10_Option 1.mp3'
-import q10opt2AudioEn from '@/assets/audios/en/39. Student Survey_Question 10_Option 2.mp3'
-import q10opt3AudioEn from '@/assets/audios/en/40. Student Survey_Question 10_Option 3.mp3'
-
-// Question 11 options (has 5 options)
-import q11opt1AudioEn from '@/assets/audios/en/42. Student Survey_Question 11_Option 1.mp3'
-import q11opt2AudioEn from '@/assets/audios/en/43. Student Survey_Question 11_Option 2.mp3'
-import q11opt3AudioEn from '@/assets/audios/en/44. Student Survey_Question 11_Option 3.mp3'
-import q11opt4AudioEn from '@/assets/audios/en/45. Student Survey_Question 11_Option 4.mp3'
-import q11opt5AudioEn from '@/assets/audios/en/46. Student Survey_Question 11_Option 5.mp3'
-
-// Question 12 options (has 5 options)
-import q12opt1AudioEn from '@/assets/audios/en/48. Student Survey_Question 12_Option 1.mp3'
-import q12opt2AudioEn from '@/assets/audios/en/49. Student Survey_Question 12_Option 2.mp3'
-import q12opt3AudioEn from '@/assets/audios/en/50. Student Survey_Question 12_Option 3.mp3'
-import q12opt4AudioEn from '@/assets/audios/en/51. Student Survey_Question 12_Option 4.mp3'
-import q12opt5AudioEn from '@/assets/audios/en/52. Student Survey_Question 12_Option 5.mp3'
-
-// Common "I do not know" audio
-import dontKnowAudioEn from '@/assets/audios/en/53. Student Survey_I Do Not Know.mp3'
-
 // Import Arabic audio files
 // Question audios
 import q1AudioAr from '@/assets/audios/ar/1. Arabic_Student Survey_Question 1.mp3'
-import q2AudioAr from '@/assets/audios/ar/5. Arabic_Student Survey_Question 2.mp3'
-import q3AudioAr from '@/assets/audios/ar/9. Arabic_Student Survey_Question 3.mp3'
-import q4AudioAr from '@/assets/audios/ar/13. Arabic_Student Survey_Question 4.mp3'
-import q5AudioAr from '@/assets/audios/ar/17. Arabic_Student Survey_Question 5.mp3'
-import q6AudioAr from '@/assets/audios/ar/21. Arabic_Student Survey_Question 6.mp3'
-import q7AudioAr from '@/assets/audios/ar/25. Arabic_Student Survey_Question 7.mp3'
-import q8AudioAr from '@/assets/audios/ar/29. Arabic_Student Survey_Question 8.mp3'
-import q9AudioAr from '@/assets/audios/ar/33. Arabic_Student Survey_Question 9.mp3'
-import q10AudioAr from '@/assets/audios/ar/37. Arabic_Student Survey_Question 10.mp3'
-import q11AudioAr from '@/assets/audios/ar/41. Arabic_Student Survey_Question 11.mp3'
-import q12AudioAr from '@/assets/audios/ar/47. Arabic_Student Survey_Question 12.mp3'
-
-// Question 1 options
-import q1opt1AudioAr from '@/assets/audios/ar/2. Arabic_Student Survey_Question 1_Option 1.mp3'
-import q1opt2AudioAr from '@/assets/audios/ar/3. Arabic_Student Survey_Question 1_Option 2.mp3'
-import q1opt3AudioAr from '@/assets/audios/ar/4. Arabic_Student Survey_Question 1_Option 3.mp3'
-
-// Question 2 options
-import q2opt1AudioAr from '@/assets/audios/ar/6. Arabic_Student Survey_Question 2_Option 1.mp3'
-import q2opt2AudioAr from '@/assets/audios/ar/7. Arabic_Student Survey_Question 2_Option 2.mp3'
-import q2opt3AudioAr from '@/assets/audios/ar/8. Arabic_Student Survey_Question 2_Option 3.mp3'
-
 // Question 3 options
 import q3opt1AudioAr from '@/assets/audios/ar/10. Arabic_Student Survey_Question 3_Option 1.mp3'
 import q3opt2AudioAr from '@/assets/audios/ar/11. Arabic_Student Survey_Question 3_Option 2.mp3'
 import q3opt3AudioAr from '@/assets/audios/ar/12. Arabic_Student Survey_Question 3_Option 3.mp3'
-
+import q4AudioAr from '@/assets/audios/ar/13. Arabic_Student Survey_Question 4.mp3'
 // Question 4 options
 import q4opt1AudioAr from '@/assets/audios/ar/14. Arabic_Student Survey_Question 4_Option 1.mp3'
 import q4opt2AudioAr from '@/assets/audios/ar/15. Arabic_Student Survey_Question 4_Option 2.mp3'
 import q4opt3AudioAr from '@/assets/audios/ar/16. Arabic_Student Survey_Question 4_Option 3.mp3'
-
+import q5AudioAr from '@/assets/audios/ar/17. Arabic_Student Survey_Question 5.mp3'
 // Question 5 options
 import q5opt1AudioAr from '@/assets/audios/ar/18. Arabic_Student Survey_Question 5_Option 1.mp3'
 import q5opt2AudioAr from '@/assets/audios/ar/19. Arabic_Student Survey_Question 5_Option 2.mp3'
+// Question 1 options
+import q1opt1AudioAr from '@/assets/audios/ar/2. Arabic_Student Survey_Question 1_Option 1.mp3'
 import q5opt3AudioAr from '@/assets/audios/ar/20. Arabic_Student Survey_Question 5_Option 3.mp3'
-
+import q6AudioAr from '@/assets/audios/ar/21. Arabic_Student Survey_Question 6.mp3'
 // Question 6 options
 import q6opt1AudioAr from '@/assets/audios/ar/22. Arabic_Student Survey_Question 6_Option 1.mp3'
 import q6opt2AudioAr from '@/assets/audios/ar/23. Arabic_Student Survey_Question 6_Option 2.mp3'
 import q6opt3AudioAr from '@/assets/audios/ar/24. Arabic_Student Survey_Question 6_Option 3.mp3'
-
+import q7AudioAr from '@/assets/audios/ar/25. Arabic_Student Survey_Question 7.mp3'
 // Question 7 options
 import q7opt1AudioAr from '@/assets/audios/ar/26. Arabic_Student Survey_Question 7_Option 1.mp3'
 import q7opt2AudioAr from '@/assets/audios/ar/27. Arabic_Student Survey_Question 7_Option 2.mp3'
 import q7opt3AudioAr from '@/assets/audios/ar/28. Arabic_Student Survey_Question 7_Option 3.mp3'
-
+import q8AudioAr from '@/assets/audios/ar/29. Arabic_Student Survey_Question 8.mp3'
+import q1opt2AudioAr from '@/assets/audios/ar/3. Arabic_Student Survey_Question 1_Option 2.mp3'
 // Question 8 options
 import q8opt1AudioAr from '@/assets/audios/ar/30. Arabic_Student Survey_Question 8_Option 1.mp3'
 import q8opt2AudioAr from '@/assets/audios/ar/31. Arabic_Student Survey_Question 8_Option 2.mp3'
 import q8opt3AudioAr from '@/assets/audios/ar/32. Arabic_Student Survey_Question 8_Option 3.mp3'
-
+import q9AudioAr from '@/assets/audios/ar/33. Arabic_Student Survey_Question 9.mp3'
 // Question 9 options
 import q9opt1AudioAr from '@/assets/audios/ar/34. Arabic_Student Survey_Question 9_Option 1.mp3'
 import q9opt2AudioAr from '@/assets/audios/ar/35. Arabic_Student Survey_Question 9_Option 2.mp3'
 import q9opt3AudioAr from '@/assets/audios/ar/36. Arabic_Student Survey_Question 9_Option 3.mp3'
-
+import q10AudioAr from '@/assets/audios/ar/37. Arabic_Student Survey_Question 10.mp3'
 // Question 10 options
 import q10opt1AudioAr from '@/assets/audios/ar/38. Arabic_Student Survey_Question 10_Option 1.mp3'
 import q10opt2AudioAr from '@/assets/audios/ar/39. Arabic_Student Survey_Question 10_Option 2.mp3'
+import q1opt3AudioAr from '@/assets/audios/ar/4. Arabic_Student Survey_Question 1_Option 3.mp3'
 import q10opt3AudioAr from '@/assets/audios/ar/40. Arabic_Student Survey_Question 10_Option 3.mp3'
-
+import q11AudioAr from '@/assets/audios/ar/41. Arabic_Student Survey_Question 11.mp3'
 // Question 11 options (has 5 options)
 import q11opt1AudioAr from '@/assets/audios/ar/42. Arabic_Student Survey_Question 11_Option 1.mp3'
 import q11opt2AudioAr from '@/assets/audios/ar/43. Arabic_Student Survey_Question 11_Option 2.mp3'
 import q11opt3AudioAr from '@/assets/audios/ar/44. Arabic_Student Survey_Question 11_Option 3.mp3'
 import q11opt4AudioAr from '@/assets/audios/ar/45. Arabic_Student Survey_Question 11_Option 4.mp3'
 import q11opt5AudioAr from '@/assets/audios/ar/46. Arabic_Student Survey_Question 11_Option 5.mp3'
-
+import q12AudioAr from '@/assets/audios/ar/47. Arabic_Student Survey_Question 12.mp3'
 // Question 12 options (has 5 options)
 import q12opt1AudioAr from '@/assets/audios/ar/48. Arabic_Student Survey_Question 12_Option 1.mp3'
 import q12opt2AudioAr from '@/assets/audios/ar/49. Arabic_Student Survey_Question 12_Option 2.mp3'
+import q2AudioAr from '@/assets/audios/ar/5. Arabic_Student Survey_Question 2.mp3'
 import q12opt3AudioAr from '@/assets/audios/ar/50. Arabic_Student Survey_Question 12_Option 3.mp3'
 import q12opt4AudioAr from '@/assets/audios/ar/51. Arabic_Student Survey_Question 12_Option 4.mp3'
 import q12opt5AudioAr from '@/assets/audios/ar/52. Arabic_Student Survey_Question 12_Option 5.mp3'
-
 // Common "I do not know" audio
 import dontKnowAudioAr from '@/assets/audios/ar/53. Arabic_Student Survey_I Do Not Know.mp3'
+// Question 2 options
+import q2opt1AudioAr from '@/assets/audios/ar/6. Arabic_Student Survey_Question 2_Option 1.mp3'
+import q2opt2AudioAr from '@/assets/audios/ar/7. Arabic_Student Survey_Question 2_Option 2.mp3'
+import q2opt3AudioAr from '@/assets/audios/ar/8. Arabic_Student Survey_Question 2_Option 3.mp3'
+import q3AudioAr from '@/assets/audios/ar/9. Arabic_Student Survey_Question 3.mp3'
+// Import English audio files
+// Question audios
+import q1AudioEn from '@/assets/audios/en/1. Student Survey_Question 1.mp3'
+// Question 3 options
+import q3opt1AudioEn from '@/assets/audios/en/10. Student Survey_Question 3_Option 1.mp3'
+import q3opt2AudioEn from '@/assets/audios/en/11. Student Survey_Question 3_Option 2.mp3'
+import q3opt3AudioEn from '@/assets/audios/en/12. Student Survey_Question 3_Option 3.mp3'
+import q4AudioEn from '@/assets/audios/en/13. Student Survey_Question 4.mp3'
+// Question 4 options
+import q4opt1AudioEn from '@/assets/audios/en/14. Student Survey_Question 4_Option 1.mp3'
+import q4opt2AudioEn from '@/assets/audios/en/15. Student Survey_Question 4_Option 2.mp3'
+import q4opt3AudioEn from '@/assets/audios/en/16. Student Survey_Question 4_Option 3.mp3'
+import q5AudioEn from '@/assets/audios/en/17. Student Survey_Question 5.mp3'
+// Question 5 options
+import q5opt1AudioEn from '@/assets/audios/en/18. Student Survey_Question 5_Option 1.mp3'
+import q5opt2AudioEn from '@/assets/audios/en/19. Student Survey_Question 5_Option 2.mp3'
+// Question 1 options
+import q1opt1AudioEn from '@/assets/audios/en/2. Student Survey_Question 1_Option 1.mp3'
+import q5opt3AudioEn from '@/assets/audios/en/20. Student Survey_Question 5_Option 3.mp3'
+import q6AudioEn from '@/assets/audios/en/21. Student Survey_Question 6.mp3'
+// Question 6 options
+import q6opt1AudioEn from '@/assets/audios/en/22. Student Survey_Question 6_Option 1.mp3'
+import q6opt2AudioEn from '@/assets/audios/en/23. Student Survey_Question 6_Option 2.mp3'
+import q6opt3AudioEn from '@/assets/audios/en/24. Student Survey_Question 6_Option 3.mp3'
+import q7AudioEn from '@/assets/audios/en/25. Student Survey_Question 7.mp3'
+// Question 7 options
+import q7opt1AudioEn from '@/assets/audios/en/26. Student Survey_Question 7_Option 1.mp3'
+import q7opt2AudioEn from '@/assets/audios/en/27. Student Survey_Question 7_Option 2.mp3'
+import q7opt3AudioEn from '@/assets/audios/en/28. Student Survey_Question 7_Option 3.mp3'
+import q8AudioEn from '@/assets/audios/en/29. Student Survey_Question 8.mp3'
+import q1opt2AudioEn from '@/assets/audios/en/3. Student Survey_Question 1_Option 2.mp3'
+// Question 8 options
+import q8opt1AudioEn from '@/assets/audios/en/30. Student Survey_Question 8_Option 1.mp3'
+import q8opt2AudioEn from '@/assets/audios/en/31. Student Survey_Question 8_Option 2.mp3'
+import q8opt3AudioEn from '@/assets/audios/en/32. Student Survey_Question 8_Option 3.mp3'
+import q9AudioEn from '@/assets/audios/en/33. Student Survey_Question 9.mp3'
+// Question 9 options
+import q9opt1AudioEn from '@/assets/audios/en/34. Student Survey_Question 9_Option 1.mp3'
+import q9opt2AudioEn from '@/assets/audios/en/35. Student Survey_Question 9_Option 2.mp3'
+import q9opt3AudioEn from '@/assets/audios/en/36. Student Survey_Question 9_Option 3.mp3'
+import q10AudioEn from '@/assets/audios/en/37. Student Survey_Question 10.mp3'
+// Question 10 options
+import q10opt1AudioEn from '@/assets/audios/en/38. Student Survey_Question 10_Option 1.mp3'
+import q10opt2AudioEn from '@/assets/audios/en/39. Student Survey_Question 10_Option 2.mp3'
+import q1opt3AudioEn from '@/assets/audios/en/4. Student Survey_Question 1_Option 3.mp3'
+import q10opt3AudioEn from '@/assets/audios/en/40. Student Survey_Question 10_Option 3.mp3'
+import q11AudioEn from '@/assets/audios/en/41. Student Survey_Question 11.mp3'
+// Question 11 options (has 5 options)
+import q11opt1AudioEn from '@/assets/audios/en/42. Student Survey_Question 11_Option 1.mp3'
+import q11opt2AudioEn from '@/assets/audios/en/43. Student Survey_Question 11_Option 2.mp3'
+import q11opt3AudioEn from '@/assets/audios/en/44. Student Survey_Question 11_Option 3.mp3'
+import q11opt4AudioEn from '@/assets/audios/en/45. Student Survey_Question 11_Option 4.mp3'
+import q11opt5AudioEn from '@/assets/audios/en/46. Student Survey_Question 11_Option 5.mp3'
+import q12AudioEn from '@/assets/audios/en/47. Student Survey_Question 12.mp3'
+// Question 12 options (has 5 options)
+import q12opt1AudioEn from '@/assets/audios/en/48. Student Survey_Question 12_Option 1.mp3'
+import q12opt2AudioEn from '@/assets/audios/en/49. Student Survey_Question 12_Option 2.mp3'
+import q2AudioEn from '@/assets/audios/en/5. Student Survey_Question 2.mp3'
+import q12opt3AudioEn from '@/assets/audios/en/50. Student Survey_Question 12_Option 3.mp3'
+import q12opt4AudioEn from '@/assets/audios/en/51. Student Survey_Question 12_Option 4.mp3'
+import q12opt5AudioEn from '@/assets/audios/en/52. Student Survey_Question 12_Option 5.mp3'
+// Common "I do not know" audio
+import dontKnowAudioEn from '@/assets/audios/en/53. Student Survey_I Do Not Know.mp3'
+// Question 2 options
+import q2opt1AudioEn from '@/assets/audios/en/6. Student Survey_Question 2_Option 1.mp3'
+import q2opt2AudioEn from '@/assets/audios/en/7. Student Survey_Question 2_Option 2.mp3'
+import q2opt3AudioEn from '@/assets/audios/en/8. Student Survey_Question 2_Option 3.mp3'
+import q3AudioEn from '@/assets/audios/en/9. Student Survey_Question 3.mp3'
 import AudioIcon from '@/assets/svg/AudioIcon'
 import { createAssessment } from '@/services/appwrite'
-import { useSearchParams } from 'next/navigation'
-import React, { Suspense, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import LanguageDropdown from '../languageDropdown'
 import { getGrades, getSchools } from '@/utils/schools'
+import { useSearchParams } from 'next/navigation'
+import React, { Suspense, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
-// Function to get audio files based on language
 const getAudioFiles = (language: string) => {
   const isArabic = language === 'ar'
 
@@ -522,6 +493,18 @@ function ChildAssessment() {
   const testType = searchParams.get('testType')
   const schoolParam = searchParams.get('school')
   const gradeParam = searchParams.get('grade')
+  const langParam = searchParams.get('lang')
+
+  // Set language from URL parameter if available
+  useEffect(() => {
+    if (
+      langParam &&
+      ['en', 'ar'].includes(langParam) &&
+      i18n.language !== langParam
+    ) {
+      i18n.changeLanguage(langParam)
+    }
+  }, [langParam, i18n])
   const questions = getQuestions(t, i18n.language)
 
   const schools = getSchools(t)
@@ -567,7 +550,7 @@ function ChildAssessment() {
         const data = {
           school: school || '',
           grade: grade || '',
-          overallScore: totalScore,
+          overallScore: totalScore / 8,
           scores: JSON.stringify(scores),
           skillScores: JSON.stringify(skillScores),
           answers: JSON.stringify(responses),

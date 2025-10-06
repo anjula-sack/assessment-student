@@ -14,6 +14,18 @@ const resources = {
   },
 }
 
+// Function to get language from URL parameter
+const getLanguageFromURL = () => {
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search)
+    const langParam = urlParams.get('lang')
+    if (langParam && ['en', 'ar'].includes(langParam)) {
+      return langParam
+    }
+  }
+  return null
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -21,11 +33,12 @@ i18n
     resources,
     fallbackLng: 'en',
     debug: process.env.NODE_ENV === 'development',
-    lng: 'en', // Set default language to prevent hydration mismatch
+    lng: getLanguageFromURL() || 'en', // Set language from URL parameter or default to 'en'
 
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
+      lookupQuerystring: 'lang',
     },
 
     interpolation: {
