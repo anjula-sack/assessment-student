@@ -231,20 +231,18 @@ function PageContent() {
     <>
       <div className="bg-primary-400 w-full px-4">
         <div className="flex justify-between items-center w-full">
-          <Link href="/">
-            <div className="flex">
-              <img
-                src="/logo.png"
-                width={40}
-                height={300}
-                alt="logo"
-                className="self-center"
-              />
-              <p className="text-md md:text-xl text-white font-semibold p-3">
-                {t('instructions.title')}
-              </p>
-            </div>
-          </Link>
+          <div className="flex">
+            <img
+              src="/logo.png"
+              width={40}
+              height={300}
+              alt="logo"
+              className="self-center"
+            />
+            <p className="text-md md:text-xl text-white font-semibold p-3">
+              {t('instructions.title')}
+            </p>
+          </div>
           <LanguageDropdown />
         </div>
       </div>
