@@ -510,9 +510,9 @@ function ChildAssessment() {
   const schools = getSchools(t)
   const grades = getGrades(t)
   const school =
-    schools.find((s) => s.value === schoolParam)?.label || schoolParam || ''
+    schools.find((s) => s.value === schoolParam)?.value || schoolParam || ''
   const grade =
-    grades.find((g) => g.value === gradeParam)?.label || gradeParam || ''
+    grades.find((g) => g.value === gradeParam)?.value || gradeParam || ''
 
   const calculateScores = () => {
     let totalScore = 0
