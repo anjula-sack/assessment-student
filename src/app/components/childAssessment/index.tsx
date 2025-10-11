@@ -1,4 +1,3 @@
-import LanguageDropdown from '../languageDropdown'
 import Button from '@/app/components/button'
 import Progress from '@/app/components/progress'
 import RadioGroup from '@/app/components/radioGroup'
@@ -139,11 +138,13 @@ import q2opt2AudioEn from '@/assets/audios/en/7. Student Survey_Question 2_Optio
 import q2opt3AudioEn from '@/assets/audios/en/8. Student Survey_Question 2_Option 3.mp3'
 import q3AudioEn from '@/assets/audios/en/9. Student Survey_Question 3.mp3'
 import AudioIcon from '@/assets/svg/AudioIcon'
-import { createAssessment } from '@/services/appwrite'
+import { createAssessment, updateScores } from '@/services/appwrite'
 import { getGrades, getSchools } from '@/utils/schools'
 import { useSearchParams } from 'next/navigation'
 import React, { Suspense, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import LanguageDropdown from '../languageDropdown'
 
 const getAudioFiles = (language: string) => {
   const isArabic = language === 'ar'
@@ -557,6 +558,13 @@ function ChildAssessment() {
           testType,
         }
         await createAssessment(data)
+        await updateScores({
+          skillScores,
+          school,
+          grade,
+          assessment: 'child',
+          testType,
+        })
         setHasSubmitted(true)
         setShowFeedback(true)
       } catch (error) {
