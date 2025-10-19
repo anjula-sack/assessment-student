@@ -21,7 +21,7 @@
   },
   "login": {
     "title": "Tilli Assessment | Sign Up",
-    "parentDetails": "Parent Details",
+    "studentDetails": "Student Details",
     "enterDetails": "Enter Details",
     "studentNameLabel": "Please enter the child's full name (ex: Raj Patel)",
     "school": "School",

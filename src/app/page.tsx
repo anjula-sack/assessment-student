@@ -119,7 +119,7 @@ function PageContent() {
           {/* School and Grade Selection */}
           <div className="bg-white p-4 md:p-6 rounded-xl w-full max-w-md mb-6">
             <h3 className="text-lg font-semibold mb-4 text-gray-700">
-              {t('login.parentDetails')}
+              {t('login.studentDetails')}
             </h3>
             <div className="space-y-4">
               <div>

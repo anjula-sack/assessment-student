@@ -21,7 +21,7 @@
   },
   "login": {
     "title": "أداة تقييم تيلي | التسجيل",
-    "parentDetails": "تفاصيل الوالدين",
+    "studentDetails": "تفاصيل الطالب",
     "enterDetails": "أدخل التفاصيل",
     "studentNameLabel": "يرجى إدخال الاسم الكامل للطفل (مثال: راج باتيل)",
     "school": "المدرسة",
