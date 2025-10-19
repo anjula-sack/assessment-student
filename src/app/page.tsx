@@ -17,12 +17,12 @@ import instruction5 from '@/assets/audios/en/instructions/instruction_5.mp3'
 import instruction6 from '@/assets/audios/en/instructions/instruction_6.mp3'
 
 // Arabic audio files
-import instruction1Ar from '@/assets/audios/ar/instructions/instruction_1.mp3'
-import instruction2Ar from '@/assets/audios/ar/instructions/instruction_2.mp3'
-import instruction3Ar from '@/assets/audios/ar/instructions/instruction_3.mp3'
-import instruction4Ar from '@/assets/audios/ar/instructions/instruction_4.mp3'
-import instruction5Ar from '@/assets/audios/ar/instructions/instruction_5.mp3'
-import instruction6Ar from '@/assets/audios/ar/instructions/instruction_6.mp3'
+import instruction1Ar from '@/assets/audios/ar/instructions/instruction_1.m4a'
+import instruction2Ar from '@/assets/audios/ar/instructions/instruction_2.m4a'
+import instruction3Ar from '@/assets/audios/ar/instructions/instruction_3.m4a'
+import instruction4Ar from '@/assets/audios/ar/instructions/instruction_4.m4a'
+import instruction5Ar from '@/assets/audios/ar/instructions/instruction_5.m4a'
+import instruction6Ar from '@/assets/audios/ar/instructions/instruction_6.m4a'
 
 import AudioIcon from '@/assets/svg/AudioIcon'
 
@@ -145,8 +145,12 @@ function PageContent() {
             </div>
           </div>
 
-          <div className="bg-white p-4 md:p-6 rounded-xl text-left relative w-full max-w-md">
-            <div className="absolute top-4 right-4 text-gray-500 cursor-pointer hover:text-black">
+          <div className="bg-white p-4 md:p-6 rounded-xl relative w-full max-w-md">
+            <div
+              className={`absolute top-4 ${
+                i18n.language === 'ar' ? 'left-4' : 'right-4'
+              } text-gray-500 cursor-pointer hover:text-black`}
+            >
               <button
                 onClick={() => {
                   let currentIndex = 0
