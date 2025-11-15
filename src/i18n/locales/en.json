@@ -111,6 +111,21 @@
     "instruction5": "Answer is only saved when you tap Next",
     "start": "Start"
   },
+  "preAssessment": {
+    "videoTitle": "Play this short video for your child before you begin",
+    "skip": "Skip video",
+    "reminderTitle": "Before you start",
+    "reminderBody": "Remember this is not a scoring assessment, this will only help your child grow so please do not guide the student only help them understand the questions and options.",
+    "understandCta": "I understand",
+    "privacyTitle": "Privacy policy",
+    "privacyBody": "We keep your child's information safe. Please review these quick reminders before continuing.",
+    "privacyPoints": [
+      "We only use the responses to understand your child's growth.",
+      "We never share identifying information outside the program.",
+      "You can stop at any point if you feel uncomfortable."
+    ],
+    "privacyCta": "Continue"
+  },
   "parentQuestionnaire": {
     "title": "Tilli Assessment | Parent Questionnaire",
     "navbarTitle": "Parent Questionnaire",

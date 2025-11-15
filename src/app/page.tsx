@@ -27,7 +27,9 @@ import instruction6Ar from '@/assets/audios/ar/instructions/instruction_6.m4a'
 import AudioIcon from '@/assets/svg/AudioIcon'
 
 enum Step {
-  PLAY,
+  VIDEO,
+  REMINDER,
+  PRIVACY,
   INSTRUCTIONS,
 }
 
@@ -54,7 +56,7 @@ const getInstructionAudios = (language: string) => {
 
 function PageContent() {
   const { t, i18n } = useTranslation()
-  const [step, setStep] = useState(Step.INSTRUCTIONS)
+  const [step, setStep] = useState(Step.VIDEO)
   const [formData, setFormData] = useState({
     school: { label: '', value: '' },
     grade: { label: '', value: '' },
@@ -96,6 +98,91 @@ function PageContent() {
     if (langParam) params.set('lang', langParam)
 
     router.push(`/assessment?${params.toString()}`)
+  }
+
+  const handleVideoComplete = () => {
+    setStep(Step.REMINDER)
+  }
+
+  const handleReminderAcknowledge = () => {
+    setStep(Step.PRIVACY)
+  }
+
+  const handlePrivacyContinue = () => {
+    setStep(Step.INSTRUCTIONS)
+  }
+
+  function VideoIntro() {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[85vh] px-4 py-8">
+        <h2 className="text-xl md:text-2xl font-semibold text-gray-700 text-center mb-6">
+          {t('preAssessment.videoTitle')}
+        </h2>
+        <div className="relative w-full max-w-3xl">
+          <video
+            src="/videos/ar/child.mp4"
+            controls
+            playsInline
+            className="w-full rounded-2xl shadow-lg"
+            onEnded={handleVideoComplete}
+          />
+          <button
+            type="button"
+            onClick={handleVideoComplete}
+            className="absolute top-3 right-3 bg-white/90 text-gray-800 text-sm font-medium px-4 py-2 rounded-full shadow hover:bg-white"
+          >
+            {t('preAssessment.skip')}
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  function Reminder() {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[85vh] px-4">
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow max-w-2xl text-center space-y-6">
+          <h2 className="text-2xl font-semibold text-gray-800">
+            {t('preAssessment.reminderTitle')}
+          </h2>
+          <p className="text-gray-600 text-base leading-relaxed">
+            {t('preAssessment.reminderBody')}
+          </p>
+          <Button onClick={handleReminderAcknowledge}>
+            {t('preAssessment.understandCta')}
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  function PrivacyPolicy() {
+    const privacyPoints = t('preAssessment.privacyPoints', {
+      returnObjects: true,
+    }) as string[]
+
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[85vh] px-4">
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow max-w-2xl w-full space-y-6">
+          <h2 className="text-2xl font-semibold text-gray-800 text-center">
+            {t('preAssessment.privacyTitle')}
+          </h2>
+          <p className="text-gray-600 text-base leading-relaxed text-center">
+            {t('preAssessment.privacyBody')}
+          </p>
+          <ul className="list-disc list-inside space-y-3 text-gray-600 text-sm md:text-base">
+            {privacyPoints.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
+          </ul>
+          <div className="flex justify-center">
+            <Button onClick={handlePrivacyContinue}>
+              {t('preAssessment.privacyCta')}
+            </Button>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   function Instructions() {
@@ -206,29 +293,18 @@ function PageContent() {
     )
   }
 
-  function Play() {
-    return (
-      <>
-        {/* Tilli image - hidden on mobile, visible on larger screens */}
-        <div className="hidden md:block absolute left-2 bottom-0 w-32 xl:w-auto">
-          <img src="/tilli.png" alt="" width={180} />
-        </div>
-
-        {/* Mobile-friendly Tilli image */}
-        <div className="md:hidden absolute right-2 bottom-2 w-16">
-          <img src="/tilli.png" alt="" width={80} />
-        </div>
-
-        <div className="justify-center items-center flex flex-col h-[90vh] px-4">
-          <p className="md:my-12 text-4xl md:text-6xl my-6 text-center font-medium">
-            {t('instructions.kidsTurn')}
-          </p>
-          <Button onClick={() => setStep(Step.INSTRUCTIONS)}>
-            {t('instructions.play')}
-          </Button>
-        </div>
-      </>
-    )
+  const renderStep = () => {
+    switch (step) {
+      case Step.VIDEO:
+        return <VideoIntro />
+      case Step.REMINDER:
+        return <Reminder />
+      case Step.PRIVACY:
+        return <PrivacyPolicy />
+      case Step.INSTRUCTIONS:
+      default:
+        return <Instructions />
+    }
   }
 
   return (
@@ -250,8 +326,7 @@ function PageContent() {
           <LanguageDropdown />
         </div>
       </div>
-      {step === Step.PLAY && <Play />}
-      {step === Step.INSTRUCTIONS && <Instructions />}
+      {renderStep()}
     </>
   )
 }
