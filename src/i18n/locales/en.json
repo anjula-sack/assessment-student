@@ -112,10 +112,10 @@
     "start": "Start"
   },
   "preAssessment": {
-    "videoTitle": "Play this short video for your child before you begin",
+    "videoTitle": "Play this short video before the child experience.",
     "skip": "Skip video",
     "reminderTitle": "Before you start",
-    "reminderBody": "Remember this is not a scoring assessment, this will only help your child grow so please do not guide the student only help them understand the questions and options.",
+    "reminderBody": "This isn't a test or a score-based assessment. It's just a gentle check-in to help your child grow and learn. Feel free to support them in understanding the questions, but let them choose their own answers.",
     "understandCta": "I understand",
     "privacyTitle": "Privacy policy",
     "privacyBody": "We keep your child's information safe. Please review these quick reminders before continuing.",
@@ -166,5 +166,20 @@
       "q10": "Does your child talk about things they're good at or want to improve? (e.g., \"I'm good at drawing,\" \"I want to get better at reading\")",
       "q11": "Does your child talk about things they want to learn or get better at? (e.g., \"I want to learn harder words\")"
     }
+  },
+  "consent": {
+    "title": "Tilli Assessment | Consent",
+    "navbarTitle": "Assessment",
+    "greeting": "Dear Parent a quick reminder,",
+    "description": "We (at Tilli) are conducting a series of assessments to evaluate a set of core **social-emotional learning (SEL) competencies** in your child. The series consists of two complementary assessments:",
+    "parentQuestionnaire": "A **parent-report questionnaire**, to be completed by you.",
+    "childQuestionnaire": "A **self-report questionnaire**, to be completed by your child.",
+    "dataUsageTitle": "The data collected will be used to:",
+    "dataUsage1": "Provide teachers and counselors with insights into classroom level learning and developmental needs.",
+    "dataUsage2": "Contribute to research that informs and improves classroom practices and student learning.",
+    "confidentialityTitle": "To ensure confidentiality:",
+    "confidentiality1": "All data will be **anonymized** prior to analysis and dissemination.",
+    "confidentiality2": "Personally identifiable information (e.g., your name or your child's name) will not be stored or shared.",
+    "consentInstruction": "If you provide consent, please **click the button below** to proceed. If you do not wish to participate, you may exit this screen."
   }
 }

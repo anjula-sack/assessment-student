@@ -123,6 +123,7 @@ function PageContent() {
             src="/videos/ar/child.mp4"
             controls
             playsInline
+            autoPlay
             className="w-full rounded-2xl shadow-lg"
             onEnded={handleVideoComplete}
           />
@@ -140,17 +141,114 @@ function PageContent() {
 
   function Reminder() {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[85vh] px-4">
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow max-w-2xl text-center space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800">
-            {t('preAssessment.reminderTitle')}
-          </h2>
-          <p className="text-gray-600 text-base leading-relaxed">
-            {t('preAssessment.reminderBody')}
-          </p>
-          <Button onClick={handleReminderAcknowledge}>
-            {t('preAssessment.understandCta')}
-          </Button>
+      <div className="min-h-screen flex flex-col">
+        <div className="flex-1 flex flex-col items-center justify-center px-4 md:px-6 py-8">
+          <div className="rounded-2xl p-6 md:p-8 w-full max-w-2xl ">
+            {/* Greeting */}
+            <h1 className="text-2xl md:text-3xl font-bold text-primary-700 text-center mb-6">
+              {t('consent.greeting')}
+            </h1>
+
+            {/* Main Content */}
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              {/* Description */}
+              <p
+                className="text-base md:text-lg"
+                dangerouslySetInnerHTML={{
+                  __html: t('consent.description').replace(
+                    /\*\*(.*?)\*\*/g,
+                    '<strong>$1</strong>',
+                  ),
+                }}
+              />
+
+              {/* Assessment Types */}
+              <div className="ml-4 space-y-2">
+                <p className="flex items-start">
+                  <span className="text-primary-600 mr-2">•</span>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: t('consent.parentQuestionnaire').replace(
+                        /\*\*(.*?)\*\*/g,
+                        '<strong>$1</strong>',
+                      ),
+                    }}
+                  />
+                </p>
+                <p className="flex items-start">
+                  <span className="text-primary-600 mr-2">•</span>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: t('consent.childQuestionnaire').replace(
+                        /\*\*(.*?)\*\*/g,
+                        '<strong>$1</strong>',
+                      ),
+                    }}
+                  />
+                </p>
+              </div>
+
+              {/* Data Usage */}
+              <div>
+                <p className="font-semibold text-gray-800 mb-2">
+                  {t('consent.dataUsageTitle')}
+                </p>
+                <div className="ml-4 space-y-2">
+                  <p className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>{t('consent.dataUsage1')}</span>
+                  </p>
+                  <p className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>{t('consent.dataUsage2')}</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Confidentiality */}
+              <div>
+                <p className="font-semibold text-gray-800 mb-2">
+                  {t('consent.confidentialityTitle')}
+                </p>
+                <div className="ml-4 space-y-2">
+                  <p className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span
+                      dangerouslySetInnerHTML={{
+                        __html: t('consent.confidentiality1').replace(
+                          /\*\*(.*?)\*\*/g,
+                          '<strong>$1</strong>',
+                        ),
+                      }}
+                    />
+                  </p>
+                  <p className="flex items-start">
+                    <span className="text-primary-600 mr-2">•</span>
+                    <span>{t('consent.confidentiality2')}</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Consent Instruction */}
+              <p className="text-base md:text-lg pt-4 border-t border-gray-200">
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: t('consent.consentInstruction').replace(
+                      /\*\*(.*?)\*\*/g,
+                      '<strong>$1</strong>',
+                    ),
+                  }}
+                />
+              </p>
+            </div>
+
+            {/* Button */}
+            <div className="text-center mt-8">
+              <Button onClick={handleReminderAcknowledge}>
+                {t('preAssessment.understandCta')}
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     )
