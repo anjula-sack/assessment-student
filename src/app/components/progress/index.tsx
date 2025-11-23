@@ -5,37 +5,25 @@ interface ProgressProps {
 }
 
 export default function Progress({ current, total }: ProgressProps) {
+  const percentage = (current / total) * 100
+
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-3 m-2 bg-yellow-200 rounded-full">
-        {/* Filled portion */}
+      <div className="relative w-full h-4 m-2 p-1 bg-white rounded-full">
         <div
-          className="absolute h-3 bg-yellow-500 rounded-full z-10"
-          style={{
-            width: `${((current + 1) / total) * 100}%`,
-          }}
+          className="h-full bg-[#fde046] transition-all duration-300 rounded-full"
+          style={{ width: `${percentage}%` }}
         />
 
-        {/* Dots */}
-        {Array.from({ length: total }).map((_, index) => {
-          const left = (index / (total - 1)) * 100
-          const isActive = index === current
-
-          return (
-            <div
-              key={index}
-              className={`absolute top-1/2 transform -translate-y-1/2 z-20 ${
-                isActive
-                  ? 'w-4 h-4 border-4 border-red-400 bg-yellow-200'
-                  : 'w-2 h-2 bg-red-300'
-              } rounded-full`}
-              style={{
-                left: `${left}%`,
-                marginLeft: isActive ? '-8px' : '-4px',
-              }}
-            />
-          )
-        })}
+        <img
+          src={'/images/progress_indicator.png'}
+          alt="cat"
+          className="absolute top-1/2 -translate-y-1/2 w-10 h-10"
+          style={{
+            left: `${percentage}%`,
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
       </div>
     </div>
   )

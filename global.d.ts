@@ -12,3 +12,11 @@ declare module '*.mp4' {
   const src: string
   export default src
 }
+
+declare interface NodeRequire {
+  context: (
+    path: string,
+    deep?: boolean,
+    filter?: RegExp,
+  ) => __WebpackModuleApi.RequireContext
+}

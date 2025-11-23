@@ -1,12 +1,11 @@
 'use client'
-import Link from 'next/link'
-import React, { Suspense, useState, useEffect } from 'react'
+import enData from '@/i18n/locales/en.json'
+import arData from '@/i18n/locales/ar.json'
+import React, { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import Button from './components/button'
 import LanguageDropdown from './components/languageDropdown'
-import Dropdown from './components/dropdown'
-import { getSchools, getGrades } from '@/utils/schools'
 
 // English audio files
 import instruction1 from '@/assets/audios/en/instructions/instruction_1.mp3'
@@ -58,40 +57,28 @@ function PageContent() {
   const { t, i18n } = useTranslation()
   const [step, setStep] = useState(Step.VIDEO)
   const [formData, setFormData] = useState({
-    school: { label: '', value: '' },
-    grade: { label: '', value: '' },
+    school: '',
+    grade: '',
+    zone: '',
+    section: '',
   })
   const router = useRouter()
   const searchParams = useSearchParams()
   const testType = searchParams.get('testType')
 
   const instructionAudios = getInstructionAudios(i18n.language)
-  const schools = getSchools(t)
-  const grades = getGrades(t)
 
-  // Set default values when component mounts
-  useEffect(() => {
-    if (schools.length > 0 && !formData.school.value) {
-      setFormData((prev) => ({ ...prev, school: schools[0] }))
-    }
-    if (grades.length > 0 && !formData.grade.value) {
-      setFormData((prev) => ({ ...prev, grade: grades[0] }))
-    }
-  }, [schools, grades, formData.school.value, formData.grade.value])
+  const data: any = i18n.language === 'ar' ? arData : enData
 
-  const handleSchoolSelect = (school: { label: string; value: string }) => {
-    setFormData((prev) => ({ ...prev, school }))
-  }
-
-  const handleGradeSelect = (grade: { label: string; value: string }) => {
-    setFormData((prev) => ({ ...prev, grade }))
-  }
+  const schools = formData.zone ? data.zonesToSchools[formData.zone] : []
+  const gradeOptions = ['grade1']
+  const sectionOptions = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']
 
   const handleStartAssessment = () => {
     const params = new URLSearchParams()
     if (testType) params.set('testType', testType)
-    if (formData.school.value) params.set('school', formData.school.value)
-    if (formData.grade.value) params.set('grade', formData.grade.value)
+    if (formData.school) params.set('school', formData.school)
+    if (formData.grade) params.set('grade', formData.grade)
 
     // Preserve language parameter
     const langParam = searchParams.get('lang')
@@ -307,25 +294,108 @@ function PageContent() {
               {t('login.studentDetails')}
             </h3>
             <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('common.selectSchool')}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {t('login.zone')} *
                 </label>
-                <Dropdown
-                  options={schools}
-                  onSelect={handleSchoolSelect}
-                  currentOption={formData.school}
-                />
+
+                <select
+                  value={formData.zone}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      zone: e.target.value,
+                    }))
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md 
+                     focus:outline-none focus:ring-2 focus:ring-[#82A4DE] 
+                     text-sm sm:text-base text-gray-900 bg-white"
+                  required
+                >
+                  <option value="">
+                    {i18n.language === 'ar' ? 'اختر المنطقة' : 'Select Zone'}
+                  </option>
+
+                  {Object.entries(data.zones).map(([zoneId, zoneName]) => (
+                    <option key={zoneId} value={zoneId}>
+                      {zoneName as string}
+                    </option>
+                  ))}
+                </select>
               </div>
+
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                {t('login.school')} *
+              </label>
+
+              <select
+                value={formData.school}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    school: e.target.value,
+                  }))
+                }
+                className="w-full px-3 py-2 border border-gray-300 rounded-md 
+                     focus:outline-none focus:ring-2 focus:ring-[#82A4DE] 
+                     text-sm sm:text-base text-gray-900 bg-white"
+                required
+                disabled={!formData.zone}
+              >
+                <option value="">{t('login.selectSchool')}</option>
+
+                {schools.map((schoolId: string) => (
+                  <option key={schoolId} value={schoolId}>
+                    {data.schools[schoolId]} {/* translated label */}
+                  </option>
+                ))}
+              </select>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('common.selectGrade')}
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {t('login.section')} *
                 </label>
-                <Dropdown
-                  options={grades}
-                  onSelect={handleGradeSelect}
-                  currentOption={formData.grade}
-                />
+                <select
+                  value={formData.section}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      section: e.target.value,
+                    }))
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#82A4DE] text-sm sm:text-base text-gray-900 bg-white"
+                  required
+                >
+                  <option value="">{t('login.selectSection')}</option>
+                  {sectionOptions.map((section) => (
+                    <option key={section} value={section}>
+                      {t(`sections.${section}`)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {t('login.grade')} *
+                </label>
+                <select
+                  value={formData.grade}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      grade: e.target.value,
+                    }))
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#82A4DE] text-sm sm:text-base text-gray-900 bg-white"
+                  required
+                >
+                  <option value="">{t('login.selectGrade')}</option>
+                  {gradeOptions.map((grade) => (
+                    <option key={grade} value={grade}>
+                      {t(`grades.${grade}`)}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
@@ -382,7 +452,12 @@ function PageContent() {
 
           <Button
             onClick={handleStartAssessment}
-            disabled={!formData.school.value || !formData.grade.value}
+            disabled={
+              !formData.school ||
+              !formData.grade ||
+              !formData.section ||
+              !formData.zone
+            }
           >
             {t('instructions.start')}
           </Button>
