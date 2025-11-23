@@ -274,6 +274,371 @@ const getQuestions = (t: any, language: string) => {
       ],
       image: '6,7,8,9.png',
     },
+    {
+      question: t('assessment.questions.q10'),
+      questionAudio: audioFiles.question_10,
+      answerOptions: [
+        {
+          label: t('assessment.answers.happy'),
+          value: '1',
+          image: 'Happy.png',
+          audio: audioFiles.question_5_option_1,
+        },
+        {
+          label: t('assessment.answers.angry'),
+          value: '2',
+          image: 'Angry.png',
+          audio: audioFiles.question_5_option_2,
+        },
+        {
+          label: t('assessment.answers.sad'),
+          value: '3',
+          image: 'Sad.png',
+          audio: audioFiles.question_5_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '6,7,8,9.png',
+    },
+    {
+      type: 'story',
+      question: t('assessment.stories.s2'),
+      questionAudio: audioFiles.story_2,
+      image: '10.png',
+    },
+    {
+      question: t('assessment.questions.q11'),
+      questionAudio: audioFiles.question_11,
+      answerOptions: [
+        {
+          label: t('assessment.answers.happy'),
+          value: '1',
+          image: 'Happy.png',
+          audio: audioFiles.question_5_option_1,
+        },
+        {
+          label: t('assessment.answers.angry'),
+          value: '2',
+          image: 'Angry.png',
+          audio: audioFiles.question_5_option_2,
+        },
+        {
+          label: t('assessment.answers.sad'),
+          value: '3',
+          image: 'Sad.png',
+          audio: audioFiles.question_5_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '11,12,13,14.png',
+    },
+    {
+      question: t('assessment.questions.q12'),
+      questionAudio: audioFiles.question_12,
+      answerOptions: [
+        {
+          label: t('assessment.answers.mistake'),
+          value: '1',
+          image: 'Q12_mistake.png',
+          audio: audioFiles.question_12_option_1,
+        },
+        {
+          label: t('assessment.answers.didntLike'),
+          value: '2',
+          image: 'Q12_didnt_like.png',
+          audio: audioFiles.question_12_option_2,
+        },
+        {
+          label: t('assessment.answers.ruin'),
+          value: '3',
+          image: 'Q12_ruin.png',
+          audio: audioFiles.question_12_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '11,12,13,14.png',
+    },
+    {
+      question: t('assessment.questions.q13'),
+      questionAudio: audioFiles.question_13,
+      answerOptions: [
+        {
+          label: t('assessment.answers.itsOkay'),
+          value: '1',
+          image: 'Q13_its_okay.png',
+          audio: audioFiles.question_13_option_1,
+        },
+        {
+          label: t('assessment.answers.help'),
+          value: '2',
+          image: 'Q13_help.png',
+          audio: audioFiles.question_13_option_2,
+        },
+        {
+          label: t('assessment.answers.13_laugh'),
+          value: '3',
+          image: 'Q13_laugh.png',
+          audio: audioFiles.question_13_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '11,12,13,14.png',
+    },
+    {
+      question: t('assessment.questions.q14'),
+      questionAudio: audioFiles.question_14,
+      answerOptions: [
+        {
+          label: t('assessment.answers.yell'),
+          value: '1',
+          image: 'Q14_yell.png',
+          audio: audioFiles.question_14_option_1,
+        },
+        {
+          label: t('assessment.answers.breathe'),
+          value: '2',
+          image: 'Q14_breathe.png',
+          audio: audioFiles.question_14_option_2,
+        },
+        {
+          label: t('assessment.answers.cry'),
+          value: '3',
+          image: 'Q14_cry.png',
+          audio: audioFiles.question_14_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '11,12,13,14.png',
+    },
+    {
+      question: t('assessment.questions.q15'),
+      questionAudio: audioFiles.question_15,
+      answerOptions: [
+        {
+          label: t('assessment.answers.worried'),
+          value: '1',
+          image: 'Worried.png',
+          audio: audioFiles.question_15_option_1,
+        },
+        {
+          label: t('assessment.answers.happy'),
+          value: '2',
+          image: 'Happy.png',
+          audio: audioFiles.question_6_option_1,
+        },
+        {
+          label: t('assessment.answers.angry'),
+          value: '3',
+          image: 'Angry.png',
+          audio: audioFiles.question_6_option_2,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '15.png',
+    },
+    {
+      type: 'story',
+      question: t('assessment.stories.s3'),
+      questionAudio: audioFiles.story_3,
+      image: '16,17,18.png',
+    },
+    {
+      question: t('assessment.questions.q16'),
+      questionAudio: audioFiles.question_16,
+      answerOptions: [
+        {
+          label: t('assessment.answers.worried'),
+          value: '1',
+          image: 'Worried.png',
+          audio: audioFiles.question_15_option_1,
+        },
+        {
+          label: t('assessment.answers.happy'),
+          value: '2',
+          image: 'Happy.png',
+          audio: audioFiles.question_6_option_1,
+        },
+        {
+          label: t('assessment.answers.angry'),
+          value: '3',
+          image: 'Angry.png',
+          audio: audioFiles.question_6_option_2,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '16,17,18.png',
+    },
+    {
+      question: t('assessment.questions.q17'),
+      questionAudio: audioFiles.question_17,
+      answerOptions: [
+        {
+          label: t('assessment.answers.toy'),
+          value: '1',
+          image: 'Q17_toy.png',
+          audio: audioFiles.question_17_option_1,
+        },
+        {
+          label: t('assessment.answers.13_laugh'),
+          value: '2',
+          image: 'Q17_laugh.png',
+          audio: audioFiles.question_13_option_3,
+        },
+        {
+          label: t('assessment.answers.itsOkay'),
+          value: '3',
+          image: 'Q17_its_okay.png',
+          audio: audioFiles.question_13_option_1,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '16,17,18.png',
+    },
+    {
+      question: t('assessment.questions.q18'),
+      questionAudio: audioFiles.question_18,
+      answerOptions: [
+        {
+          label: t('assessment.answers.shout'),
+          value: '1',
+          image: 'Q18_Adult.png',
+          audio: audioFiles.question_18_option_1,
+        },
+        {
+          label: t('assessment.answers.breathe'),
+          value: '2',
+          image: 'Q18_breathe.png',
+          audio: audioFiles.question_14_option_2,
+        },
+        {
+          label: t('assessment.answers.talkToAdult'),
+          value: '3',
+          image: 'Q18_hug.png',
+          audio: audioFiles.question_18_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '16,17,18.png',
+    },
+    {
+      type: 'story',
+      question: t('assessment.stories.s4'),
+      questionAudio: audioFiles.story_4,
+      image: '19.png',
+    },
+    {
+      question: t('assessment.questions.q19'),
+      questionAudio: audioFiles.question_19,
+      answerOptions: [
+        {
+          label: t('assessment.answers.askAdult'),
+          value: '1',
+          image: 'Q19_adult.png',
+          audio: audioFiles.question_9_option_3,
+        },
+        {
+          label: t('assessment.answers.share'),
+          value: '2',
+          image: 'Q19_share.png',
+          audio: audioFiles.question_19_option_2,
+        },
+        {
+          label: t('assessment.answers.holdToy'),
+          value: '3',
+          image: 'Q19_hold_toy.png',
+          audio: audioFiles.question_19_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '19.png',
+    },
+    {
+      type: 'story',
+      question: t('assessment.stories.s5'),
+      questionAudio: audioFiles.story_5,
+      image: '20.png',
+    },
+    {
+      question: t('assessment.questions.q20'),
+      questionAudio: audioFiles.question_20,
+      answerOptions: [
+        {
+          label: t('assessment.answers.askAdult'),
+          value: '1',
+          image: 'Q20_adult.png',
+          audio: audioFiles.question_9_option_3,
+        },
+        {
+          label: t('assessment.answers.askToShare'),
+          value: '2',
+          image: 'Q20_ask_to_share.png',
+          audio: audioFiles.question_20_option_2,
+        },
+        {
+          label: t('assessment.answers.20_hit'),
+          value: '3',
+          image: 'Q20_hit.png',
+          audio: audioFiles.question_20_option_3,
+        },
+        {
+          label: t('assessment.answers.dontKnow'),
+          value: '4',
+          image: 'dont_know.png',
+          audio: audioFiles.question_5_option_4,
+        },
+      ],
+      image: '20.png',
+    },
   ]
 }
 
@@ -549,12 +914,12 @@ function ChildAssessment() {
             )}
           </div>
         </div>
-        <div className="mt-3 text-right px-2">
+        <div className="mt-3 text-right px-2 flex justify-center">
           <Button onClick={handleNext}>
             {/* <Button onClick={handleNext} disabled={!responses[currentQuestion]}> */}
             {currentQuestion < questions.length - 1
               ? t('common.next')
-              : t('common.submit')}
+              : t('common.done')}
           </Button>
         </div>
       </div>

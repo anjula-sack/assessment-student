@@ -1,7 +1,7 @@
 {
   "common": {
     "next": "Next",
-    "submit": "Submit",
+    "done": "Done",
     "loading": "Loading...",
     "yes": "Yes",
     "no": "No",
@@ -50,7 +50,11 @@
     "yayDone": "Yay you are done!",
     "didYouHaveFun": "Did you have fun doing this?",
     "stories": {
-      "s1": "The teacher asked the class to line up so that they can go out to play. In the rush, another child accidentally bumped into this girl, and she fell and hurt her knee — that’s why she’s crying in the picture."
+      "s1": "The teacher asked the class to line up so that they can go out to play. In the rush, another child accidentally bumped into this girl, and she fell and hurt her knee — that’s why she’s crying in the picture.",
+      "s2": "He spent a long time making a drawing he was really proud of. When another child came to look—holding a glass of water—the boy turned away for a moment. When he looked back, the other child had spilled water all over the drawing.",
+      "s3": "He clutched his backpack as dark clouds gathered. He had never walked home alone in the rain, and the thunder made his heart race. As the first drops fell, he grew uneasy, imagining everything that could go wrong.",
+      "s4": "Imagine a situation where you are playing with a toy that you like. Another child wants to play with that same toy, but there is only one toy.",
+      "s5": "But now the other child suddenly grabs it without asking."
     },
     "questions": {
       "q1": "Do you talk to anyone at home when you are sad or need help?",
@@ -90,13 +94,29 @@
       "walkAway": "Walk away",
       "breathe": "Take deep breaths",
       "hit": "Hit someone",
-      "askAdult": "Ask an adult"
+      "askAdult": "Ask an adult",
+      "mistake": "Dropped it by mistake",
+      "didntLike": "Didn’t like the drawing",
+      "ruin": "Wanted to ruin it",
+      "itsOkay": "Say “It’s okay”",
+      "help": "Help clean up the mess",
+      "13_laugh": "Laugh at them",
+      "yell": "Yell at others",
+      "cry": "Cry a little bit",
+      "worried": "Worried",
+      "toy": "Offer them a toy",
+      "shout": "Shout loudly",
+      "talkToAdult": "Talk to an adult",
+      "holdToy": "Hold the toy tightly and not let anyone use it",
+      "share": "Play together and share it",
+      "20_hit": "Hit the friend",
+      "askToShare": "Ask to share"
     }
   },
   "language": {
     "selectLanguage": "Select Language",
     "english": "English",
-    "arabic": "العربية"
+    "arabic": "Arabic"
   },
   "home": {
     "title": "Assessment",
