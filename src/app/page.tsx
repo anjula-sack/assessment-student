@@ -28,7 +28,6 @@ import AudioIcon from '@/assets/svg/AudioIcon'
 enum Step {
   VIDEO,
   REMINDER,
-  PRIVACY,
   INSTRUCTIONS,
 }
 
@@ -91,10 +90,6 @@ function PageContent() {
 
   const handleVideoComplete = () => {
     setStep(Step.REMINDER)
-  }
-
-  const handleReminderAcknowledge = () => {
-    setStep(Step.PRIVACY)
   }
 
   const handlePrivacyContinue = () => {
@@ -238,39 +233,10 @@ function PageContent() {
 
             {/* Button */}
             <div className="text-center mt-8">
-              <Button onClick={handleReminderAcknowledge}>
+              <Button onClick={handlePrivacyContinue}>
                 {t('preAssessment.understandCta')}
               </Button>
             </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  function PrivacyPolicy() {
-    const privacyPoints = t('preAssessment.privacyPoints', {
-      returnObjects: true,
-    }) as string[]
-
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[85vh] px-4">
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow max-w-2xl w-full space-y-6">
-          <h2 className="text-2xl font-semibold text-gray-800 text-center">
-            {t('preAssessment.privacyTitle')}
-          </h2>
-          <p className="text-gray-600 text-base leading-relaxed text-center">
-            {t('preAssessment.privacyBody')}
-          </p>
-          <ul className="list-disc list-inside space-y-3 text-gray-600 text-sm md:text-base">
-            {privacyPoints.map((point, index) => (
-              <li key={index}>{point}</li>
-            ))}
-          </ul>
-          <div className="flex justify-center">
-            <Button onClick={handlePrivacyContinue}>
-              {t('preAssessment.privacyCta')}
-            </Button>
           </div>
         </div>
       </div>
@@ -479,8 +445,6 @@ function PageContent() {
         return <VideoIntro />
       case Step.REMINDER:
         return <Reminder />
-      case Step.PRIVACY:
-        return <PrivacyPolicy />
       case Step.INSTRUCTIONS:
       default:
         return <Instructions />

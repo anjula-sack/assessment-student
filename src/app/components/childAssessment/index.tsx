@@ -132,7 +132,7 @@ function ChildAssessment() {
           scores: JSON.stringify(answers),
           skillScores: JSON.stringify(skillScores),
           answers: JSON.stringify(responses),
-          testType,
+          testType: testType || 'PRE',
         }
 
         await createAssessment(data)
@@ -143,7 +143,7 @@ function ChildAssessment() {
           section,
           zone,
           assessment: 'child',
-          testType,
+          testType: testType || 'PRE',
         })
         setHasSubmitted(true)
         setShowFeedback(true)
@@ -187,6 +187,13 @@ function ChildAssessment() {
 
   const handleFeedbackResponse = (response: string) => {
     setShowThankYou(true)
+  }
+
+  const isButtonDisabled = (questionType) => {
+    if (questionType === 'slider' || questionType == undefined) {
+      return !responses[currentQuestion]
+    }
+    return false
   }
 
   if (isSubmitting) {
@@ -344,8 +351,10 @@ function ChildAssessment() {
           </div>
         </div>
         <div className="mt-3 text-right px-2 flex justify-center">
-          {/* <Button onClick={handleNext}> */}
-          <Button onClick={handleNext} disabled={!responses[currentQuestion]}>
+          <Button
+            onClick={handleNext}
+            disabled={isButtonDisabled(questions[currentQuestion].type)}
+          >
             {currentQuestion < questions.length - 1
               ? t('common.next')
               : t('common.done')}
