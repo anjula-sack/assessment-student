@@ -300,7 +300,7 @@ function ChildAssessment() {
             <div
               className={`${
                 questions[currentQuestion].image
-                  ? 'absolute top-[220px] left-2'
+                  ? 'absolute top-[180px] left-2'
                   : ''
               }`}
             >

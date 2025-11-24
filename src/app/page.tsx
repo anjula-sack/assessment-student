@@ -256,8 +256,8 @@ function PageContent() {
           <img src="/tilli.png" alt="" width={80} />
         </div>
 
-        <div className="justify-center items-center flex flex-col h-[90vh] px-4">
-          <h2 className="text-xl font-semibold text-gray-700 text-center mb-10">
+        <div className="justify-center items-center flex flex-col mt-5 px-4">
+          <h2 className="text-xl font-semibold text-gray-700 text-center mb-5">
             {t('instructions.readInstructions')}
           </h2>
 

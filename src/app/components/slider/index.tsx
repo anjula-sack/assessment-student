@@ -28,7 +28,7 @@ export default function Slider({
   const percentage = (index / (answerOptions.length - 1)) * 100
 
   return (
-    <div className="w-full max-w-none flex flex-col items-center mt-4">
+    <div className="w-full max-w-none flex flex-col items-center mt-4 mx-4">
       <div className="relative w-full h-6 bg-gray-200 rounded-full shrink-0">
         <div
           className="absolute top-0 left-0 h-full bg-yellow-200 rounded-full transition-all duration-300"
