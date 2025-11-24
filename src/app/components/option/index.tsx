@@ -5,8 +5,10 @@ interface OptionProps {
   text: string
   value: string
   audio: string
+  score: number
+  questionId: string
   isSelected: boolean
-  onChange: (value: string) => void
+  onChange: (value: string, score: number, questionId: string) => void
 }
 
 function Option({
@@ -16,12 +18,14 @@ function Option({
   audio,
   isSelected,
   onChange,
+  score,
+  questionId,
 }: OptionProps) {
   const handleOptionClick = () => {
     if (audio) {
       new Audio(audio).play()
     }
-    onChange(value)
+    onChange(value, score, questionId)
   }
 
   return (

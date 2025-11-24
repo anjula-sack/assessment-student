@@ -79,6 +79,8 @@ function PageContent() {
     if (testType) params.set('testType', testType)
     if (formData.school) params.set('school', formData.school)
     if (formData.grade) params.set('grade', formData.grade)
+    if (formData.section) params.set('section', formData.section)
+    if (formData.zone) params.set('zone', formData.zone)
 
     // Preserve language parameter
     const langParam = searchParams.get('lang')
@@ -228,6 +230,11 @@ function PageContent() {
                 />
               </p>
             </div>
+
+            <div
+              className="mt-12 text-black"
+              dangerouslySetInnerHTML={{ __html: t('consent.privacyPolicy') }}
+            />
 
             {/* Button */}
             <div className="text-center mt-8">

@@ -7,640 +7,11 @@ import { createAssessment, updateScores } from '@/services/appwrite'
 import { useSearchParams } from 'next/navigation'
 import React, { Suspense, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getAudio } from '@/utils/audioLoader'
 
 import LanguageDropdown from '../languageDropdown'
-
-const getQuestions = (t: any, language: string) => {
-  const audioFiles = getAudio(language)
-
-  return [
-    {
-      question: t('assessment.questions.q1'),
-      questionAudio: audioFiles.question_1,
-      answerOptions: [
-        {
-          label: t('assessment.answers.always'),
-          value: '1',
-          image: 'Q1_Always.png',
-          audio: audioFiles.question_1_option_1,
-        },
-        {
-          label: t('assessment.answers.never'),
-          value: '2',
-          image: 'Q1_Never.png',
-          audio: audioFiles.question_1_option_2,
-        },
-        {
-          label: t('assessment.answers.sometimes'),
-          value: '3',
-          image: 'Q1_Sometimes.png',
-          audio: audioFiles.question_1_option_3,
-        },
-      ],
-      image: '1.png',
-    },
-    {
-      question: t('assessment.questions.q1'),
-      questionAudio: audioFiles.question_2,
-      answerOptions: [
-        {
-          label: t('assessment.answers.always'),
-          value: '1',
-          image: 'Q2_Always.png',
-          audio: audioFiles.question_2_option_1,
-        },
-        {
-          label: t('assessment.answers.never'),
-          value: '2',
-          image: 'Q2_Never.png',
-          audio: audioFiles.question_2_option_2,
-        },
-        {
-          label: t('assessment.answers.sometimes'),
-          value: '3',
-          image: 'Q2_Sometimes.png',
-          audio: audioFiles.question_2_option_3,
-        },
-      ],
-      image: '2.png',
-    },
-    {
-      question: t('assessment.questions.q1'),
-      questionAudio: audioFiles.question_3,
-      answerOptions: [
-        {
-          label: t('assessment.answers.always'),
-          value: '1',
-          image: 'Q3_Always.png',
-          audio: audioFiles.question_3_option_1,
-        },
-        {
-          label: t('assessment.answers.never'),
-          value: '2',
-          image: 'Q3_Never.png',
-          audio: audioFiles.question_3_option_2,
-        },
-        {
-          label: t('assessment.answers.sometimes'),
-          value: '3',
-          image: 'Q3_Sometimes.png',
-          audio: audioFiles.question_3_option_3,
-        },
-      ],
-      image: '3.png',
-    },
-    {
-      question: t('assessment.questions.q4'),
-      type: 'slider',
-      questionAudio: audioFiles.question_4,
-      answerOptions: [
-        {
-          label: t('assessment.answers.always'),
-          value: '1',
-          audio: audioFiles.question_4_option_1,
-        },
-        {
-          label: t('assessment.answers.never'),
-          value: '2',
-          audio: audioFiles.question_4_option_2,
-        },
-        {
-          label: t('assessment.answers.sometimes'),
-          value: '3',
-          audio: audioFiles.question_4_option_3,
-        },
-      ],
-      image: '4.png',
-    },
-    {
-      question: t('assessment.questions.q5'),
-      questionAudio: audioFiles.question_5,
-      answerOptions: [
-        {
-          label: t('assessment.answers.happy'),
-          value: '1',
-          image: 'Happy.png',
-          audio: audioFiles.question_5_option_1,
-        },
-        {
-          label: t('assessment.answers.angry'),
-          value: '2',
-          image: 'Angry.png',
-          audio: audioFiles.question_5_option_2,
-        },
-        {
-          label: t('assessment.answers.sad'),
-          value: '3',
-          image: 'Sad.png',
-          audio: audioFiles.question_5_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '5.png',
-    },
-    {
-      type: 'story',
-      question: t('assessment.stories.s1'),
-      questionAudio: audioFiles.story_1,
-      image: '6,7,8,9.png',
-    },
-    {
-      question: t('assessment.questions.q6'),
-      questionAudio: audioFiles.question_6,
-      answerOptions: [
-        {
-          label: t('assessment.answers.happy'),
-          value: '1',
-          image: 'Happy.png',
-          audio: audioFiles.question_6_option_1,
-        },
-        {
-          label: t('assessment.answers.angry'),
-          value: '2',
-          image: 'Angry.png',
-          audio: audioFiles.question_6_option_2,
-        },
-        {
-          label: t('assessment.answers.sad'),
-          value: '3',
-          image: 'Sad.png',
-          audio: audioFiles.question_6_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_6_option_4,
-        },
-      ],
-      image: '6,7,8,9.png',
-    },
-    {
-      question: t('assessment.questions.q7'),
-      questionAudio: audioFiles.question_7,
-      answerOptions: [
-        {
-          label: t('assessment.answers.runningFast'),
-          value: '1',
-          image: 'Q7_running_fast.png',
-          audio: audioFiles.question_7_option_1,
-        },
-        {
-          label: t('assessment.answers.wantedToHit'),
-          value: '2',
-          image: 'Q7_wanted_to_hit.png',
-          audio: audioFiles.question_7_option_2,
-        },
-        {
-          label: t('assessment.answers.didNotSee'),
-          value: '3',
-          image: 'Q7_did_not_see.png',
-          audio: audioFiles.question_7_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_7_option_4,
-        },
-      ],
-      image: '6,7,8,9.png',
-    },
-    {
-      question: t('assessment.questions.q8'),
-      questionAudio: audioFiles.question_8,
-      answerOptions: [
-        {
-          label: t('assessment.answers.laugh'),
-          value: '1',
-          image: 'Q8_Laugh.png',
-          audio: audioFiles.question_8_option_1,
-        },
-        {
-          label: t('assessment.answers.comfort'),
-          value: '2',
-          image: 'Q8_Comfort.png',
-          audio: audioFiles.question_8_option_2,
-        },
-        {
-          label: t('assessment.answers.walkAway'),
-          value: '3',
-          image: 'Q8_walk_away.png',
-          audio: audioFiles.question_8_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_8_option_4,
-        },
-      ],
-      image: '6,7,8,9.png',
-    },
-    {
-      question: t('assessment.questions.q9'),
-      questionAudio: audioFiles.question_9,
-      answerOptions: [
-        {
-          label: t('assessment.answers.breathe'),
-          value: '1',
-          image: 'Q9_breathe.png',
-          audio: audioFiles.question_9_option_1,
-        },
-        {
-          label: t('assessment.answers.hit'),
-          value: '2',
-          image: 'Q9_hit.png',
-          audio: audioFiles.question_9_option_2,
-        },
-        {
-          label: t('assessment.answers.askAdult'),
-          value: '3',
-          image: 'Q9_ask_adult.png',
-          audio: audioFiles.question_9_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_9_option_4,
-        },
-      ],
-      image: '6,7,8,9.png',
-    },
-    {
-      question: t('assessment.questions.q10'),
-      questionAudio: audioFiles.question_10,
-      answerOptions: [
-        {
-          label: t('assessment.answers.happy'),
-          value: '1',
-          image: 'Happy.png',
-          audio: audioFiles.question_5_option_1,
-        },
-        {
-          label: t('assessment.answers.angry'),
-          value: '2',
-          image: 'Angry.png',
-          audio: audioFiles.question_5_option_2,
-        },
-        {
-          label: t('assessment.answers.sad'),
-          value: '3',
-          image: 'Sad.png',
-          audio: audioFiles.question_5_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '6,7,8,9.png',
-    },
-    {
-      type: 'story',
-      question: t('assessment.stories.s2'),
-      questionAudio: audioFiles.story_2,
-      image: '10.png',
-    },
-    {
-      question: t('assessment.questions.q11'),
-      questionAudio: audioFiles.question_11,
-      answerOptions: [
-        {
-          label: t('assessment.answers.happy'),
-          value: '1',
-          image: 'Happy.png',
-          audio: audioFiles.question_5_option_1,
-        },
-        {
-          label: t('assessment.answers.angry'),
-          value: '2',
-          image: 'Angry.png',
-          audio: audioFiles.question_5_option_2,
-        },
-        {
-          label: t('assessment.answers.sad'),
-          value: '3',
-          image: 'Sad.png',
-          audio: audioFiles.question_5_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '11,12,13,14.png',
-    },
-    {
-      question: t('assessment.questions.q12'),
-      questionAudio: audioFiles.question_12,
-      answerOptions: [
-        {
-          label: t('assessment.answers.mistake'),
-          value: '1',
-          image: 'Q12_mistake.png',
-          audio: audioFiles.question_12_option_1,
-        },
-        {
-          label: t('assessment.answers.didntLike'),
-          value: '2',
-          image: 'Q12_didnt_like.png',
-          audio: audioFiles.question_12_option_2,
-        },
-        {
-          label: t('assessment.answers.ruin'),
-          value: '3',
-          image: 'Q12_ruin.png',
-          audio: audioFiles.question_12_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '11,12,13,14.png',
-    },
-    {
-      question: t('assessment.questions.q13'),
-      questionAudio: audioFiles.question_13,
-      answerOptions: [
-        {
-          label: t('assessment.answers.itsOkay'),
-          value: '1',
-          image: 'Q13_its_okay.png',
-          audio: audioFiles.question_13_option_1,
-        },
-        {
-          label: t('assessment.answers.help'),
-          value: '2',
-          image: 'Q13_help.png',
-          audio: audioFiles.question_13_option_2,
-        },
-        {
-          label: t('assessment.answers.13_laugh'),
-          value: '3',
-          image: 'Q13_laugh.png',
-          audio: audioFiles.question_13_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '11,12,13,14.png',
-    },
-    {
-      question: t('assessment.questions.q14'),
-      questionAudio: audioFiles.question_14,
-      answerOptions: [
-        {
-          label: t('assessment.answers.yell'),
-          value: '1',
-          image: 'Q14_yell.png',
-          audio: audioFiles.question_14_option_1,
-        },
-        {
-          label: t('assessment.answers.breathe'),
-          value: '2',
-          image: 'Q14_breathe.png',
-          audio: audioFiles.question_14_option_2,
-        },
-        {
-          label: t('assessment.answers.cry'),
-          value: '3',
-          image: 'Q14_cry.png',
-          audio: audioFiles.question_14_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '11,12,13,14.png',
-    },
-    {
-      question: t('assessment.questions.q15'),
-      questionAudio: audioFiles.question_15,
-      answerOptions: [
-        {
-          label: t('assessment.answers.worried'),
-          value: '1',
-          image: 'Worried.png',
-          audio: audioFiles.question_15_option_1,
-        },
-        {
-          label: t('assessment.answers.happy'),
-          value: '2',
-          image: 'Happy.png',
-          audio: audioFiles.question_6_option_1,
-        },
-        {
-          label: t('assessment.answers.angry'),
-          value: '3',
-          image: 'Angry.png',
-          audio: audioFiles.question_6_option_2,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '15.png',
-    },
-    {
-      type: 'story',
-      question: t('assessment.stories.s3'),
-      questionAudio: audioFiles.story_3,
-      image: '16,17,18.png',
-    },
-    {
-      question: t('assessment.questions.q16'),
-      questionAudio: audioFiles.question_16,
-      answerOptions: [
-        {
-          label: t('assessment.answers.worried'),
-          value: '1',
-          image: 'Worried.png',
-          audio: audioFiles.question_15_option_1,
-        },
-        {
-          label: t('assessment.answers.happy'),
-          value: '2',
-          image: 'Happy.png',
-          audio: audioFiles.question_6_option_1,
-        },
-        {
-          label: t('assessment.answers.angry'),
-          value: '3',
-          image: 'Angry.png',
-          audio: audioFiles.question_6_option_2,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '16,17,18.png',
-    },
-    {
-      question: t('assessment.questions.q17'),
-      questionAudio: audioFiles.question_17,
-      answerOptions: [
-        {
-          label: t('assessment.answers.toy'),
-          value: '1',
-          image: 'Q17_toy.png',
-          audio: audioFiles.question_17_option_1,
-        },
-        {
-          label: t('assessment.answers.13_laugh'),
-          value: '2',
-          image: 'Q17_laugh.png',
-          audio: audioFiles.question_13_option_3,
-        },
-        {
-          label: t('assessment.answers.itsOkay'),
-          value: '3',
-          image: 'Q17_its_okay.png',
-          audio: audioFiles.question_13_option_1,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '16,17,18.png',
-    },
-    {
-      question: t('assessment.questions.q18'),
-      questionAudio: audioFiles.question_18,
-      answerOptions: [
-        {
-          label: t('assessment.answers.shout'),
-          value: '1',
-          image: 'Q18_Adult.png',
-          audio: audioFiles.question_18_option_1,
-        },
-        {
-          label: t('assessment.answers.breathe'),
-          value: '2',
-          image: 'Q18_breathe.png',
-          audio: audioFiles.question_14_option_2,
-        },
-        {
-          label: t('assessment.answers.talkToAdult'),
-          value: '3',
-          image: 'Q18_hug.png',
-          audio: audioFiles.question_18_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '16,17,18.png',
-    },
-    {
-      type: 'story',
-      question: t('assessment.stories.s4'),
-      questionAudio: audioFiles.story_4,
-      image: '19.png',
-    },
-    {
-      question: t('assessment.questions.q19'),
-      questionAudio: audioFiles.question_19,
-      answerOptions: [
-        {
-          label: t('assessment.answers.askAdult'),
-          value: '1',
-          image: 'Q19_adult.png',
-          audio: audioFiles.question_9_option_3,
-        },
-        {
-          label: t('assessment.answers.share'),
-          value: '2',
-          image: 'Q19_share.png',
-          audio: audioFiles.question_19_option_2,
-        },
-        {
-          label: t('assessment.answers.holdToy'),
-          value: '3',
-          image: 'Q19_hold_toy.png',
-          audio: audioFiles.question_19_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '19.png',
-    },
-    {
-      type: 'story',
-      question: t('assessment.stories.s5'),
-      questionAudio: audioFiles.story_5,
-      image: '20.png',
-    },
-    {
-      question: t('assessment.questions.q20'),
-      questionAudio: audioFiles.question_20,
-      answerOptions: [
-        {
-          label: t('assessment.answers.askAdult'),
-          value: '1',
-          image: 'Q20_adult.png',
-          audio: audioFiles.question_9_option_3,
-        },
-        {
-          label: t('assessment.answers.askToShare'),
-          value: '2',
-          image: 'Q20_ask_to_share.png',
-          audio: audioFiles.question_20_option_2,
-        },
-        {
-          label: t('assessment.answers.20_hit'),
-          value: '3',
-          image: 'Q20_hit.png',
-          audio: audioFiles.question_20_option_3,
-        },
-        {
-          label: t('assessment.answers.dontKnow'),
-          value: '4',
-          image: 'dont_know.png',
-          audio: audioFiles.question_5_option_4,
-        },
-      ],
-      image: '20.png',
-    },
-  ]
-}
+import Slider from '../slider'
+import ParentMessage from '../parentMessage'
+import getQuestions from '@/utils/getQuestions'
 
 export default function Assessment() {
   return (
@@ -650,46 +21,58 @@ export default function Assessment() {
   )
 }
 
-const scoringMatrix = {
-  '0': (answer: string) => (answer === '3' ? 3 : 1), // Q1: answer 2 gets 3 marks rest 1 mark
-  '1': (answer: string) => (['1', '2', '3'].includes(answer) ? 3 : 1), // Q2: answers 1,2,3 gets 3 marks rest 1 mark
-  '2': (answer: string) => (answer === '1' ? 3 : answer === '3' ? 2 : 0), // Q3: answer 1 gets 3 marks, answer 3 gets 2 marks rest gets 0
-  '3': (answer: string) => (answer === '1' ? 3 : 0), // Q4: answer 1 gets 3 marks rest 0 mark
-  '4': (answer: string) => (['1', '2'].includes(answer) ? 3 : 0), // Q5: answers 1,2 gets 3 marks rest 0 mark
-  '5': (answer: string) => (answer === '1' ? 3 : 0), // Q6: answer 1 gets 3 marks rest 0 mark
-  '6': (answer: string) => (answer === '1' ? 3 : answer === '2' ? 2 : 0), // Q7: answer 1 gets 3 marks, answer 2 gets 2 marks rest gets 0
-  '7': (answer: string) => (answer === '1' ? 3 : answer === '2' ? 2 : 0), // Q8: answer 1 gets 3 marks, answer 2 gets 2 marks rest gets 0
-  '8': (answer: string) => (answer === '1' ? 3 : 0), // Q9: answer 1 gets 3 marks rest 0 mark
-  '9': (answer: string) => (answer === '1' ? 3 : 0), // Q10: answer 1 gets 3 marks rest 0 mark
-  '10': (answer: string) => (['1', '2', '3', '4'].includes(answer) ? 3 : 0), // Q11: answers 1,2,3,4 gets 3 marks rest 0 mark
-  '11': (answer: string) => (['1', '2', '3', '4'].includes(answer) ? 3 : 0), // Q12: answers 1,2,3,4 gets 3 marks rest 0 mark
-}
-
 const skillQuestionMap = {
-  self_awareness: ['question_1', 'question_2', 'question_11'],
-  social_management: ['question_3', 'question_9', 'question_10'],
-  social_awareness: ['question_1', 'question_6'],
-  relationship_skills: ['question_5', 'question_7'],
-  responsible_decision_making: ['question_8', 'question_10'],
-  metacognition: ['question_3', 'question_4', 'question_11', 'question_12'],
-  empathy: ['question_6', 'question_5', 'question_7'],
-  critical_thinking: ['question_8', 'question_4'],
-}
-
-function Slider() {
-  return (
-    <div className="w-full h-10 bg-gray-200 rounded-full">
-      <div className="w-1/2 h-full bg-primary-500 rounded-full"></div>
-      <div className="w-1/2 h-full bg-primary-500 rounded-full"></div>
-      <div className="w-1/2 h-full bg-primary-500 rounded-full"></div>
-    </div>
-  )
+  self_awareness: ['question_6', 'question_11', 'question_16'],
+  social_management: [
+    'question_9',
+    'question_14',
+    'question_18',
+    'question_20',
+  ],
+  social_awareness: ['question_5', 'question_7', 'question_10', 'question_15'],
+  relationship_skills: [
+    'question_8',
+    'question_13',
+    'question_17',
+    'question_19',
+  ],
+  responsible_decision_making: [
+    'question_7',
+    'question_12',
+    'question_19',
+    'question_20',
+  ],
+  metacognition: ['question_9', 'question_14', 'question_18'],
+  empathy: [
+    'question_5',
+    'question_6',
+    'question_7',
+    'question_8',
+    'question_10',
+    'question_11',
+    'question_13',
+    'question_15',
+    'question_16',
+    'question_17',
+    'question_20',
+  ],
+  critical_thinking: [
+    'question_7',
+    'question_8',
+    'question_12',
+    'question_17',
+    'question_19',
+    'question_20',
+  ],
 }
 
 function ChildAssessment() {
   const { t, i18n } = useTranslation()
   const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [responses, setResponses] = useState<Record<number, string>>({})
+  const [responses, setResponses] = useState<Record<number, string | string[]>>(
+    {},
+  )
+  const [answers, setAnswers] = useState<Record<string, number>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [showFeedback, setShowFeedback] = useState(false)
@@ -697,6 +80,10 @@ function ChildAssessment() {
   const searchParams = useSearchParams()
   const testType = searchParams.get('testType')
   const langParam = searchParams.get('lang')
+  const section = searchParams.get('section')
+  const zone = searchParams.get('zone')
+  const grade = searchParams.get('grade')
+  const school = searchParams.get('school')
 
   // Set language from URL parameter if available
   useEffect(() => {
@@ -710,33 +97,23 @@ function ChildAssessment() {
   }, [langParam, i18n])
   const questions = getQuestions(t, i18n.language)
 
-  const school = ''
-  const grade = ''
-
   const calculateScores = () => {
-    let totalScore = 0
-    const scores: Record<string, number> = {}
+    const totalScore = Object.values(answers).reduce(
+      (acc, curr) => acc + curr,
+      0,
+    )
     const skillScores: Record<string, number> = {}
-
-    // Calculate scores for each question
-    Object.entries(responses).forEach(([questionIndex, answer]) => {
-      const score =
-        scoringMatrix[questionIndex as keyof typeof scoringMatrix]?.(answer) ||
-        0
-      totalScore += score
-      scores[`question_${parseInt(questionIndex) + 1}`] = score
-    })
 
     // Calculate scores for each skill based on skillQuestionMap
     Object.entries(skillQuestionMap).forEach(([skill, questions]) => {
       let skillScore = 0
       questions.forEach((question) => {
-        skillScore += scores[question] || 0
+        skillScore += answers[question] || 0
       })
       skillScores[skill] = skillScore / questions.length
     })
 
-    return { totalScore, scores, skillScores }
+    return { totalScore, skillScores }
   }
 
   const handleNext = async () => {
@@ -745,21 +122,26 @@ function ChildAssessment() {
     } else {
       setIsSubmitting(true)
       try {
-        const { totalScore, scores, skillScores } = calculateScores()
+        const { totalScore, skillScores } = calculateScores()
         const data = {
           school: school || '',
           grade: grade || '',
+          section: section || '',
+          zone: zone || '',
           overallScore: totalScore / 8,
-          scores: JSON.stringify(scores),
+          scores: JSON.stringify(answers),
           skillScores: JSON.stringify(skillScores),
           answers: JSON.stringify(responses),
           testType,
         }
+
         await createAssessment(data)
         await updateScores({
           skillScores,
           school,
           grade,
+          section,
+          zone,
           assessment: 'child',
           testType,
         })
@@ -773,11 +155,34 @@ function ChildAssessment() {
     }
   }
 
-  const handleChange = (value: string) => {
-    setResponses({
-      ...responses,
-      [currentQuestion]: value,
-    })
+  const handleChange = (value: string, score: number, questionId: string) => {
+    if (questionId == 'question_21') {
+      const existing = responses[currentQuestion] || []
+
+      let updated: string[] = []
+
+      if (existing.includes(value)) {
+        updated = (existing as string[]).filter((v) => v !== value)
+      } else {
+        updated = [...(existing as string[]), value]
+      }
+
+      setResponses({
+        ...responses,
+        [currentQuestion]: updated,
+      })
+    } else {
+      setResponses({
+        ...responses,
+        [currentQuestion]: value,
+      })
+    }
+    if (questionId != 'skip' && questionId != 'question_21') {
+      setAnswers({
+        ...answers,
+        [questionId]: score,
+      })
+    }
   }
 
   const handleFeedbackResponse = (response: string) => {
@@ -817,7 +222,7 @@ function ChildAssessment() {
           <div className="text-6xl font-semibold text-gray-700 mb-8 text-center">
             {t('assessment.didYouHaveFun')}
           </div>
-          <div className="space-y-4 mb-8">
+          <div className="mb-8 flex items-center justify-center">
             <Button onClick={() => handleFeedbackResponse('yes')}>
               {t('common.yes')}
             </Button>
@@ -864,6 +269,7 @@ function ChildAssessment() {
 
   return (
     <div className="w-full max-w-md mx-auto">
+      <ParentMessage open={[3, 7, 12, 16, 20].includes(currentQuestion)} />
       <div className="py-4 bg-primary-500 flex items-center px-4">
         <div className="flex-1 mr-4">
           <Progress current={currentQuestion} total={questions.length} />
@@ -873,14 +279,24 @@ function ChildAssessment() {
       <div className="w-full max-w-md mx-auto">
         <div className="p-2 rounded-lg">
           <div className="relative bg-white rounded-xl mb-8">
-            <img
-              src={`/images/${questions[currentQuestion].image}`}
-              width={450}
-              height={400}
-              alt="image"
-              className="w-full h-auto max-w-full transition-opacity duration-300"
-            />
-            <div className="absolute top-[220px] left-2">
+            {questions[currentQuestion].image && (
+              <>
+                <img
+                  src={`/images/${questions[currentQuestion].image}`}
+                  width={450}
+                  height={400}
+                  alt="image"
+                  className="w-full h-auto max-w-full transition-opacity duration-300"
+                />
+              </>
+            )}
+            <div
+              className={`${
+                questions[currentQuestion].image
+                  ? 'absolute top-[220px] left-2'
+                  : ''
+              }`}
+            >
               <button
                 type="button"
                 onClick={() =>
@@ -891,32 +307,45 @@ function ChildAssessment() {
                 <AudioIcon />
               </button>
             </div>
+
             <div className="text-lg md:text-2xl font-medium mb-4 text-gray-500 px-2 bg-white p-2 rounded-b-xl">
               {questions[currentQuestion].question}
             </div>
           </div>
 
+          {questions[currentQuestion].type === 'slider' && (
+            <Slider
+              onChange={handleChange}
+              answerOptions={questions[currentQuestion].answerOptions}
+            />
+          )}
+
           <div className="grid grid-cols-2 gap-4 place-items-center">
-            {questions[currentQuestion].type === 'slider' ? (
-              <Slider />
-            ) : questions[currentQuestion].type === 'story' ? null : (
-              questions[currentQuestion].answerOptions.map((opt) => (
-                <Option
-                  key={opt.value}
-                  image={opt.image}
-                  text={opt.label}
-                  value={opt.value}
-                  audio={opt.audio}
-                  isSelected={responses[currentQuestion] === opt.value}
-                  onChange={handleChange}
-                />
-              ))
-            )}
+            {questions[currentQuestion].type === 'story' ||
+            questions[currentQuestion].type === 'slider'
+              ? null
+              : questions[currentQuestion].answerOptions.map((opt) => (
+                  <Option
+                    key={opt.value}
+                    image={opt.image}
+                    text={opt.label}
+                    value={opt.value}
+                    audio={opt.audio}
+                    isSelected={
+                      Array.isArray(responses[currentQuestion])
+                        ? responses[currentQuestion].includes(opt.value)
+                        : responses[currentQuestion] === opt.value
+                    }
+                    onChange={handleChange}
+                    score={opt.score}
+                    questionId={questions[currentQuestion].questionId}
+                  />
+                ))}
           </div>
         </div>
         <div className="mt-3 text-right px-2 flex justify-center">
-          <Button onClick={handleNext}>
-            {/* <Button onClick={handleNext} disabled={!responses[currentQuestion]}> */}
+          {/* <Button onClick={handleNext}> */}
+          <Button onClick={handleNext} disabled={!responses[currentQuestion]}>
             {currentQuestion < questions.length - 1
               ? t('common.next')
               : t('common.done')}

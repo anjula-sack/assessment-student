@@ -76,7 +76,8 @@
       "q17": "What can you do to help this child feel better?",
       "q18": "When you feel scared, what can you do to calm yourself?",
       "q19": "What would you do in this situation?",
-      "q20": "What would you do now?"
+      "q20": "What would you do now?",
+      "q21": "What did you do last week when you were at home? (select all the things you did)"
     },
     "answers": {
       "always": "Always",
@@ -110,7 +111,17 @@
       "holdToy": "Hold the toy tightly and not let anyone use it",
       "share": "Play together and share it",
       "20_hit": "Hit the friend",
-      "askToShare": "Ask to share"
+      "askToShare": "Ask to share",
+      "allTheDays": "Yes! all the days",
+      "someDays": "Some of the days",
+      "none": "None of the days",
+      "playTablet": "Playing on the phone / tablet",
+      "watchVideos": "Watching videos",
+      "watchTV": "Watching TV",
+      "watchTVWithFamily": "Watching videos/tv with my family",
+      "playSiblingOutside": "Playing with friends / siblings outside",
+      "read": "Reading with caregivers",
+      "playAloneOutside": "Playing by myself outside"
     }
   },
   "language": {
@@ -136,6 +147,10 @@
     "instruction4": "Tap on the audio icon to listen.",
     "instruction5": "Answer is only saved when you tap Next",
     "start": "Start"
+  },
+  "parentMessage": {
+    "dearParents": "Dear Parents",
+    "subtitle": "his isn’t a test—just help them understand the questions and let them answer in their own way."
   },
   "preAssessment": {
     "videoTitle": "Play this short video before the child experience.",
@@ -165,7 +180,8 @@
     "confidentialityTitle": "To ensure confidentiality:",
     "confidentiality1": "All data will be **anonymized** prior to analysis and dissemination.",
     "confidentiality2": "Personally identifiable information (e.g., your name or your child's name) will not be stored or shared.",
-    "consentInstruction": "If you provide consent, please **click the button below** to proceed. If you do not wish to participate, you may exit this screen."
+    "consentInstruction": "If you provide consent, please **click the button below** to proceed. If you do not wish to participate, you may exit this screen.",
+    "privacyPolicy": "Read more about our <u><a href='https://www.tillikids.com/privacypolicy'>Privacy Policy</a></u> here."
   },
   "zones": {
     "irbid": "Irbid",
