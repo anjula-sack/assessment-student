@@ -41,7 +41,9 @@
     "selectZone": "Select Zone",
     "selectSchool": "Select School",
     "selectSection": "Select Section",
-    "selectGrade": "Select Grade"
+    "selectGrade": "Select Grade",
+    "schoolNotInList": "School not in list",
+    "enterNewSchool": "Enter new school"
   },
   "assessment": {
     "title": "tilli Assessment",

@@ -20,7 +20,7 @@ export default function Progress({ current, total }: ProgressProps) {
         <img
           src={'/images/progress_indicator.png'}
           alt="cat"
-          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-10"
+          className="absolute top-1/2 -translate-y-1/2 h-10"
           style={{
             left: isltr ? 'auto' : `${percentage}%`,
             right: isltr ? `${percentage}%` : 'auto',
