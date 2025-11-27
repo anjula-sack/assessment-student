@@ -34,7 +34,7 @@ const getQuestions = (t: any, language: string) => {
       image: '1.png',
     },
     {
-      question: t('assessment.questions.q1'),
+      question: t('assessment.questions.q2'),
       questionAudio: audioFiles.question_2,
       questionId: 'question_2',
       answerOptions: [
@@ -63,7 +63,7 @@ const getQuestions = (t: any, language: string) => {
       image: '2.png',
     },
     {
-      question: t('assessment.questions.q1'),
+      question: t('assessment.questions.q3'),
       questionAudio: audioFiles.question_3,
       questionId: 'question_3',
       answerOptions: [

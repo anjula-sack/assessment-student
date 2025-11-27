@@ -6,9 +6,6 @@
     "yes": "نعم",
     "no": "لا",
     "backToHome": "العودة للصفحة الرئيسية",
-    "selectSchool": "اختر المدرسة",
-    "selectGrade": "اختر الصف",
-    "selectSection": "اختر الشعبة",
     "enterStudentName": "أدخل اسم الطالب",
     "iDoNotKnow": "لا أعرف"
   },
@@ -31,9 +28,13 @@
   "login": {
     "title": "أداة تقييم تيلي | التسجيل",
     "studentDetails": "تفاصيل الطالب",
+    "selectGrade": "اختر الصف",
+    "selectSection": "اختر الشعبة",
+    "selectSchool": "اختر المدرسة",
     "enterDetails": "أدخل التفاصيل",
     "studentNameLabel": "يرجى إدخال الاسم الكامل للطفل (مثال: راج باتيل)",
     "school": "المدرسة",
+    "zone": "المنطقة",
     "grade": "الصف",
     "section": "الشعبة",
     "error": "فشل في تسجيل الدخول. يرجى المحاولة مرة أخرى."

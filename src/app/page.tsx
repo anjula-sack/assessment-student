@@ -102,22 +102,26 @@ function PageContent() {
         <h2 className="text-xl md:text-2xl font-semibold text-gray-700 text-center mb-6">
           {t('preAssessment.videoTitle')}
         </h2>
-        <div className="relative w-full max-w-3xl">
-          <video
-            src="/videos/ar/child.mp4"
-            controls
-            playsInline
-            autoPlay
-            className="w-full rounded-2xl shadow-lg"
-            onEnded={handleVideoComplete}
-          />
-          <button
-            type="button"
-            onClick={handleVideoComplete}
-            className="absolute top-3 right-3 bg-white/90 text-gray-800 text-sm font-medium px-4 py-2 rounded-full shadow hover:bg-white"
-          >
-            {t('preAssessment.skip')}
-          </button>
+        <div className="min-h-screen flex flex-col">
+          <div className="w-full max-w-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+              <div className="w-full aspect-video">
+                <video
+                  src="/videos/ar/child.mp4"
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-contain bg-black"
+                />
+              </div>
+              <button
+                onClick={handlePrivacyContinue}
+                className="absolute top-3 right-3 bg-white/90 text-gray-800 text-sm font-medium px-4 py-2 rounded-full shadow hover:bg-white"
+              >
+                {t('preAssessment.skip')}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -12,6 +12,7 @@ import LanguageDropdown from '../languageDropdown'
 import Slider from '../slider'
 import ParentMessage from '../parentMessage'
 import getQuestions from '@/utils/getQuestions'
+import PreloadImage from '../preloadImage'
 
 export default function Assessment() {
   return (
@@ -102,9 +103,9 @@ function ChildAssessment() {
       (acc, curr) => acc + curr,
       0,
     )
+
     const skillScores: Record<string, number> = {}
 
-    // Calculate scores for each skill based on skillQuestionMap
     Object.entries(skillQuestionMap).forEach(([skill, questions]) => {
       let skillScore = 0
       questions.forEach((question) => {
@@ -113,7 +114,10 @@ function ChildAssessment() {
       skillScores[skill] = skillScore / questions.length
     })
 
-    return { totalScore, skillScores }
+    return {
+      overallScore: totalScore / 16,
+      skillScores,
+    }
   }
 
   const handleNext = async () => {
@@ -122,13 +126,13 @@ function ChildAssessment() {
     } else {
       setIsSubmitting(true)
       try {
-        const { totalScore, skillScores } = calculateScores()
+        const { overallScore, skillScores } = calculateScores()
         const data = {
           school: school || '',
           grade: grade || '',
           section: section || '',
           zone: zone || '',
-          overallScore: totalScore / 8,
+          overallScore,
           scores: JSON.stringify(answers),
           skillScores: JSON.stringify(skillScores),
           answers: JSON.stringify(responses),
@@ -288,7 +292,7 @@ function ChildAssessment() {
           <div className="relative bg-white rounded-xl mb-8">
             {questions[currentQuestion].image && (
               <>
-                <img
+                <PreloadImage
                   src={`/images/${questions[currentQuestion].image}`}
                   width={450}
                   height={400}

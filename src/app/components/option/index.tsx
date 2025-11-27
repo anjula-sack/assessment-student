@@ -1,4 +1,5 @@
 import React from 'react'
+import PreloadImage from '../preloadImage'
 
 interface OptionProps {
   image: string
@@ -33,14 +34,14 @@ function Option({
       onClick={handleOptionClick}
       className={`relative cursor-pointer p-2 rounded-xl border bg-white
         ${isSelected ? 'border-blue-400 shadow-md' : 'border-transparent'}
+        h-full min-w-full
       `}
-      style={{ width: 180 }}
     >
       {/* Image */}
-      <img
+      <PreloadImage
         src={`/images/answers/${image}`}
         alt={text}
-        className="rounded-lg w-full object-contain"
+        className="rounded-lg object-contain"
       />
 
       {/* Label */}

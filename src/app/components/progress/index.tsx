@@ -11,7 +11,7 @@ export default function Progress({ current, total }: ProgressProps) {
 
   return (
     <div className="flex justify-center">
-      <div className="relative w-full h-4 m-2 p-1 bg-white rounded-full">
+      <div className="relative w-full h-4 m-1 p-1 bg-white rounded-full">
         <div
           className="h-full bg-[#fde046] transition-all duration-300 rounded-full"
           style={{ width: `${percentage}%` }}
@@ -20,7 +20,7 @@ export default function Progress({ current, total }: ProgressProps) {
         <img
           src={'/images/progress_indicator.png'}
           alt="cat"
-          className="absolute top-1/2 -translate-y-1/2 w-10 h-10"
+          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-10"
           style={{
             left: isltr ? 'auto' : `${percentage}%`,
             right: isltr ? `${percentage}%` : 'auto',

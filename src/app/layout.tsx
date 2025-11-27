@@ -17,7 +17,6 @@ export default function RootLayout({
   const { i18n } = useTranslation()
 
   useEffect(() => {
-    // Update HTML attributes after hydration to avoid mismatch
     document.documentElement.lang = i18n.language
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr'
   }, [i18n.language])
