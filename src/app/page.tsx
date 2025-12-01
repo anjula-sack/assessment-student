@@ -85,7 +85,7 @@ function PageContent() {
     // Preserve language parameter
     const langParam = searchParams.get('lang')
     if (langParam) params.set('lang', langParam)
-
+    localStorage.setItem('studentInfo', JSON.stringify(formData))
     router.push(`/assessment?${params.toString()}`)
   }
 

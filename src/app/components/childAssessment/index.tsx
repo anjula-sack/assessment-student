@@ -78,6 +78,9 @@ function ChildAssessment() {
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const [showFeedback, setShowFeedback] = useState(false)
   const [showThankYou, setShowThankYou] = useState(false)
+  const [studentInfo, setStudentInfo] = useState<Record<string, string> | null>(
+    null,
+  )
   const searchParams = useSearchParams()
   const testType = searchParams.get('testType')
   const langParam = searchParams.get('lang')
@@ -85,6 +88,13 @@ function ChildAssessment() {
   const zone = searchParams.get('zone')
   const grade = searchParams.get('grade')
   const school = searchParams.get('school')
+
+  useEffect(() => {
+    const studentInfo = localStorage.getItem('studentInfo')
+    if (studentInfo) {
+      setStudentInfo(JSON.parse(studentInfo))
+    }
+  }, [])
 
   // Set language from URL parameter if available
   useEffect(() => {
@@ -127,11 +137,22 @@ function ChildAssessment() {
       setIsSubmitting(true)
       try {
         const { overallScore, skillScores } = calculateScores()
-        const data = {
+        const studentInfoData = {
           school: school || '',
           grade: grade || '',
           section: section || '',
           zone: zone || '',
+        }
+
+        if (studentInfo) {
+          studentInfoData.school = studentInfo.school
+          studentInfoData.grade = studentInfo.grade
+          studentInfoData.section = studentInfo.section
+          studentInfoData.zone = studentInfo.zone
+        }
+
+        const data = {
+          ...studentInfoData,
           overallScore,
           scores: JSON.stringify(answers),
           skillScores: JSON.stringify(skillScores),
@@ -141,11 +162,8 @@ function ChildAssessment() {
 
         await createAssessment(data)
         await updateScores({
+          ...studentInfoData,
           skillScores,
-          school,
-          grade,
-          section,
-          zone,
           assessment: 'child',
           testType: testType || 'PRE',
         })

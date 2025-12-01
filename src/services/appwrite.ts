@@ -1,4 +1,4 @@
-import { Account, Databases, ID, Models, Query } from 'appwrite'
+import { Databases, ID, Query } from 'appwrite'
 
 import client from '../../client'
 
@@ -92,18 +92,7 @@ export const updateScores = async ({
       },
     )
 
-    agg = await databases.listDocuments(
-      process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID,
-      process.env.NEXT_PUBLIC_APPWRITE_SCORES_COLLECTION_ID,
-      [
-        Query.equal('school', school),
-        Query.equal('grade', grade),
-        Query.equal('section', section),
-        Query.equal('zone', zone),
-        Query.equal('assessment', assessment),
-        Query.equal('testType', testType),
-      ],
-    )
+    return
   }
 
   const doc = agg.documents[0]
